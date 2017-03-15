@@ -1,9 +1,11 @@
 # 1
 str1 = "Hello world!"
-print "e:{} o:{}".format(str1.count("e"), str1.count("o"))
-print "count: {}".format(str1.count("a") + str1.count("e") + \
-                         str1.count("i") + str1.count("o") + \
-                         str1.count("y") + str1.count("u"))
+print "a:{}".format(str1.count("a"))
+print "e:{}".format(str1.count("e"))
+print "i:{}".format(str1.count("i"))
+print "o:{}".format(str1.count("o"))
+print "u:{}".format(str1.count("u"))
+print "y:{}".format(str1.count("y"))
 
 # 2
 a = 1234.5678
