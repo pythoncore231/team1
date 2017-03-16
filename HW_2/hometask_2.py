@@ -26,11 +26,6 @@ print(string.upper())
 print(string.replace("i", "&"))
 
 
-a = 1
-b = 5
-c = a * b
-print(c)
-
 
 n = 1234
 str_n = format(n)
