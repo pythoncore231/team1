@@ -21,16 +21,25 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!"""
 
-print(string)
+print(string.count("better"), string.count("never"), string.count("is"))
+print(string.upper())
+print(string.replace("i", "&"))
 
 
-str1 = "arytdgdbvannaeeebbbbiiiiiii"
+a = 1
+b = 5
+c = a * b
+print(c)
 
-print(str1.count('a'), str1.count('e'), str1.count('i'))
+
+n = 1234
+str_n = format(n)
+total_n = int(str_n[0]) + int(str_n[1]) + int(str_n[2]) + int(str_n[3])
+print ("total_n = ", total_n)
 
 
-d = 24544.784245
-num = "%f" % d
-pos = num.find(".")
-
-print(int(num[pos-3]) + int(num[pos-2]) + int(num[pos-1]) + int(num[pos+1]) + int(num[pos+2]) + int(num[pos+3]))
+a = 0
+b = 1
+a, b = b, a
+print("a =", a)
+print("b =", b)
