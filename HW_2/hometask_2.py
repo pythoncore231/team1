@@ -21,10 +21,7 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!"""
 
-print(string.count("better"), string.count("never"), string.count("is"))
-print(string.upper())
-print(string.replace("i", "&"))
-
+print(string.count("better"), string.count("never"), string.count("is"), string.replace("i", "&"), string.upper())
 
 
 n = 1234
