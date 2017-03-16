@@ -27,12 +27,14 @@ b= x*(math.atan(z)+(math.e**(-(x+3.0))))
 print 'A)\na=', a, 'b=', b
 #b
 a=(3.0+(math.e**(y-1.0)))/(1+(x**2.0)*(math.fabs(y-math.tan(z))))
-b=1+math.fabs(y-x)+(((y-x)**2.0)/2.0)+(math.abs((y-x)**3.0)/3.0)
+b=1+math.fabs(y-x)+(((y-x)**2.0)/2.0)+(math.fabs((y-x)**3.0)/3.0)
 print 'B)\na=', a, 'b=', b
 #c
 a=((1.0+y)*((x+y)/(x**2.0+4.0)))/(math.e**(-(x)-2.0)+(1.0/(x**2.0+4.0)))
 b=(1.0+math.cos(y-2.0))/(((x**4.0)/2.0)+(math.sin(z)**2.0))
+print 'C)\na=', a, 'b=', b
 #d
 a=(y+x)/((y**2.0)+math.fabs(x**2.0/(y+((x**3.0)/3.0))))
 b=(1.0+((math.tan(z/2.0))**2))
+print 'D)\na=', a, 'b=', b
 #e
