@@ -48,7 +48,8 @@ if D < 0:
     print "Nema"
 elif D == 0:
      print "Odyn"
-elif D > 0: print "dva"
+else:
+    print "dva"
 
 
 
