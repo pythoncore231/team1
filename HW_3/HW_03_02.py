@@ -1,6 +1,7 @@
-"""Insert correct Date"""
+"""2) Enter three values (year, month, day) in the relevant variables. Identify
+whether your entries correspond to the correct record date."""
 
-"""Insert correct Date"""
+
 
 Year = int(raw_input("Year = "))
 Month = int(raw_input("Month = "))

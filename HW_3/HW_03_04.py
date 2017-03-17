@@ -1,13 +1,13 @@
-year = input("Year = ")
-day = input("Day = ")
-month = input("Month = ")
-#y = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+#4 Given three arbitrary numbers. Determine whether you can build triangle with sides of lengths; If so, then print it perimeter and area.
+from math import sqrt
 
-if ((1 <= day <= 31) and not ((month % 2) == 0)):
-    print "{}.{}.{}".format(day,month,year)
-elif ((1 <= day <= 28) and (month  == 2)):
-    print "{}.{}.{}".format(day,month,year)
-elif (((year % 4)) == 0) and ((1 <= day <= 29) and (month  == 2)):
-    print "{}.{}.{}".format(day,month,year)
-else:
-    print "Incorrect input!!!"
+a = int(raw_input("A = "))
+b = int(raw_input("B = "))
+c = int(raw_input("C = "))
+p = (a + b + c)
+s = str(sqrt(p*(p - a)*(p - b)* (p - c)))
+R1 = (a < (b + c))
+R2 = (b < (a + c))
+R3 = (c < (a + b))
+if R1 and R2 and R3 == True:
+	print "P(ABC) = {}, S(ABC) = {}".format(p, s)
