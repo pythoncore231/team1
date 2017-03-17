@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+
+string = """
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!"""
+
+# Знайти в заданій стрічці кількість входжень слів (better, never, is)
+count_better = string.count(" better")
+count_never = string.count(" never")
+count_is = string.count(" is")
+print count_better, "'better' in string"
+print count_never, "'never' in string"
+print count_is, "'is' in string"
+print
+
+# Вивести весь текст у верхньому регістрі(всі великі літери)
+string_upper = string.upper()
+print string_upper
+print
+
+# Замінити всі входження символу i на &
+string_lower_i = string.replace('i', '&')
+string_all_i = string_lower_i.replace('I', '&')
+print string_all_i
+print
+
+# Дано чотирицифрове натуральне число. Знайти добуток цифр цього числа.
+n = 1234
+str_n = format(n)
+total_n = int(str_n[0]) + int(str_n[1]) + int(str_n[2]) + int(str_n[3])
+print "total_n = ", total_n
+print
+
+# Поміняти між собою значення двох змінних, не використовуючи третьої змінної.
+a = 0
+b = 1
+a, b = b, a
+print "a =", a
+print "b =", b
+print
