@@ -2,7 +2,7 @@
 
 k = int(input("day = "))
 
-if 0 > k > 365:
+if not k in range(0, 365):
     print "Incorrect!"
 else:
     # 1) with tuple

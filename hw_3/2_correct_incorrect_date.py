@@ -1,8 +1,8 @@
 # 2 Date is correct/incorrect
 
-year = int(input("year = "))
-month = int(input("month = "))
-day = int(input("day = "))
+year = int(raw_input("year = "))
+month = int(raw_input("month = "))
+day = int(raw_input("day = "))
 
 if 0 < len(str(year)) <= 4:
     print "Year is correct"
