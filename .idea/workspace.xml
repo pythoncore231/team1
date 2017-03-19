@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac7c08f1-28de-4dc0-bce6-7c8dc3082fa0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lesson3/HW_03/trykutnyk.py" />
+    <list default="true" id="ac7c08f1-28de-4dc0-bce6-7c8dc3082fa0" name="Default" comment="Fix vysokosnyi rik i ne parni misyaci">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py" afterPath="$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,31 +21,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="kvadratne-rivnaynya.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lesson3/HW_03/kvadratne-rivnaynya.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rik-misyak-den.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rik-misyak-den.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trykutnyk.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lesson3/HW_03/trykutnyk.py">
+      <file leaf-file-name="vysokosnyi-rik.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lesson3/HW_03/vysokosnyi-rik.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="119">
+              <caret line="7" column="36" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,8 +60,8 @@
         <option value="$PROJECT_DIR$/lesson3/HW_03/day-of-year.py" />
         <option value="$PROJECT_DIR$/lesson3/HW_03/vysokosnyi-rik.py" />
         <option value="$PROJECT_DIR$/lesson3/HW_03/kvadratne-rivnaynya.py" />
-        <option value="$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py" />
         <option value="$PROJECT_DIR$/lesson3/HW_03/trykutnyk.py" />
+        <option value="$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py" />
       </list>
     </option>
   </component>
@@ -159,7 +149,7 @@
       <pane id="Scratches" />
     </panes>
   </component>
-  <component name="RunManager" selected="Python.trykutnyk">
+  <component name="RunManager" selected="Python.rik-misyak-den">
     <configuration default="false" name="day-of-year" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -388,8 +378,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.trykutnyk" />
-        <item index="1" class="java.lang.String" itemvalue="Python.rik-misyak-den" />
+        <item index="0" class="java.lang.String" itemvalue="Python.rik-misyak-den" />
+        <item index="1" class="java.lang.String" itemvalue="Python.trykutnyk" />
         <item index="2" class="java.lang.String" itemvalue="Python.kvadratne-rivnaynya" />
         <item index="3" class="java.lang.String" itemvalue="Python.vysokosnyi-rik" />
         <item index="4" class="java.lang.String" itemvalue="Python.day-of-year" />
@@ -445,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489949037906</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Dodav zavdanny pro trykutnyk">
+      <created>1489950406093</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1489950406093</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -465,9 +462,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39871383" sideWeight="0.49702382" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.49702382" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39228296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39228296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25297618" sideWeight="0.51069516" order="2" side_tool="true" content_ui="tabs" />
@@ -526,7 +523,8 @@
     <MESSAGE value="Dodav zavdanny pro vysokosnyi rik" />
     <MESSAGE value="Dodav zavdanny pro kvadratne rivnyanya" />
     <MESSAGE value="Dodav zavdanny pro rik misyak den" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodav zavdanny pro rik misyak den" />
+    <MESSAGE value="Dodav zavdanny pro trykutnyk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodav zavdanny pro trykutnyk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -550,26 +548,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/day-of-year.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/vysokosnyi-rik.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lesson3/task3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="50" column="23" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="50" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/trykutnyk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -582,18 +572,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py">
+    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/day-of-year.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/trykutnyk.py">
+    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/vysokosnyi-rik.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="119">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lesson3/HW_03/rik-misyak-den.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
         </state>
       </provider>
