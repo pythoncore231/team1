@@ -10,12 +10,9 @@ if 1 <= c <= 31 and (b%2)!=0 and  1 <= b <=12:
 elif 1 <= c <= 28 and b == 2:
     print "Korektno"
     print "{}.{}.{}".format(a, b, c)
-elif a % 4 == 0 and 1 <= c <= 29 and b == 2:
-    if a % 100 != 0 or (a % 100 == 0 and a % 400 == 0):
-        print "Korektno"
-        print "Vysokosnyi rik"
-        print "{}.{}.{}".format(a, b, c)
-    else:
-        print  "Ne korektno rik Ne vysokosnyi"
-
-else: print "Ne korektno"
+elif a % 4 == 0 and a % 100 != 0 or a % 400 == 0 and 1 <= c <= 29 and b == 2:
+    print "Korektno"
+    print "Vysokosnyi rik"
+    print "{}.{}.{}".format(a, b, c)
+else:
+    print  "Ne korektno"
