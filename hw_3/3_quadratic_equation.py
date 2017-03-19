@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 # 3 Quadratic equation
 
 from math import sqrt
@@ -11,7 +8,7 @@ c = float(input("c = "))
 
 D = b ** 2 - 4 * a * c
 if D < 0:
-    print "Коренів немає"
+    print "roots of a quadratic equation does not exist"
 elif D == 0:
     print "x = {}".format((b + sqrt(D)) / 2 * a)
 else:
