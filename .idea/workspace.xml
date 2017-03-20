@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed4ae99b-2f65-44a7-8968-fb61d2f144b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HW_3/1_leap_year.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HW_3/2_correct_incorrect_date.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HW_3/3_triangle.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HW_2/hometask_math.py" afterPath="$PROJECT_DIR$/HW_2/hometask_math.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,6 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/team1$hometask_math.coverage" NAME="hometask_math Coverage Results" MODIFIED="1489945418404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_2" />
     <SUITE FILE_PATH="coverage/team1$1_leap_year.coverage" NAME="1_leap_year Coverage Results" MODIFIED="1489949546136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_3" />
+    <SUITE FILE_PATH="coverage/team1$3_triangle.coverage" NAME="3_triangle Coverage Results" MODIFIED="1490024162234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_3" />
     <SUITE FILE_PATH="coverage/team1$project.coverage" NAME="project Coverage Results" MODIFIED="1489673905312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_1" />
     <SUITE FILE_PATH="coverage/team1$2_correct_incorrect_date.coverage" NAME="2_correct_incorrect_date Coverage Results" MODIFIED="1489959088904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_3" />
     <SUITE FILE_PATH="coverage/team1$hometask_2.coverage" NAME="hometask_2 Coverage Results" MODIFIED="1489674667824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW_2" />
@@ -27,11 +26,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2_correct_incorrect_date.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW_3/2_correct_incorrect_date.py">
+      <file leaf-file-name="3_triangle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HW_3/3_triangle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            <state relative-caret-position="195">
+              <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -75,6 +74,7 @@
         <option value="$PROJECT_DIR$/HW_2/1_leap_year.py" />
         <option value="$PROJECT_DIR$/HW_3/1_leap_year.py" />
         <option value="$PROJECT_DIR$/HW_3/2_correct_incorrect_date.py" />
+        <option value="$PROJECT_DIR$/HW_3/3_triangle.py" />
       </list>
     </option>
   </component>
@@ -172,25 +172,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
-  <component name="RunManager" selected="Python.2_correct_incorrect_date">
-    <configuration default="false" name="project" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW_1" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="team1" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW_1/project.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.3_triangle">
     <configuration default="false" name="hometask_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -259,6 +241,24 @@
       <module name="team1" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW_3/2_correct_incorrect_date.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="3_triangle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW_3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="team1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW_3/3_triangle.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -478,19 +478,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.project" />
-      <item index="1" class="java.lang.String" itemvalue="Python.hometask_2" />
-      <item index="2" class="java.lang.String" itemvalue="Python.hometask_math" />
-      <item index="3" class="java.lang.String" itemvalue="Python.1_leap_year" />
-      <item index="4" class="java.lang.String" itemvalue="Python.2_correct_incorrect_date" />
+      <item index="0" class="java.lang.String" itemvalue="Python.hometask_2" />
+      <item index="1" class="java.lang.String" itemvalue="Python.hometask_math" />
+      <item index="2" class="java.lang.String" itemvalue="Python.1_leap_year" />
+      <item index="3" class="java.lang.String" itemvalue="Python.2_correct_incorrect_date" />
+      <item index="4" class="java.lang.String" itemvalue="Python.3_triangle" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.2_correct_incorrect_date" />
-        <item index="1" class="java.lang.String" itemvalue="Python.1_leap_year" />
-        <item index="2" class="java.lang.String" itemvalue="Python.hometask_math" />
-        <item index="3" class="java.lang.String" itemvalue="Python.hometask_2" />
-        <item index="4" class="java.lang.String" itemvalue="Python.project" />
+        <item index="0" class="java.lang.String" itemvalue="Python.3_triangle" />
+        <item index="1" class="java.lang.String" itemvalue="Python.2_correct_incorrect_date" />
+        <item index="2" class="java.lang.String" itemvalue="Python.1_leap_year" />
+        <item index="3" class="java.lang.String" itemvalue="Python.hometask_math" />
+        <item index="4" class="java.lang.String" itemvalue="Python.hometask_2" />
       </list>
     </recent_temporary>
   </component>
@@ -564,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489688341148</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added leap day and right year, month, day&#10;">
+      <created>1489959179893</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1489959179893</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -602,7 +609,8 @@
     <MESSAGE value="chenge hometask_2" />
     <MESSAGE value="added hometask" />
     <MESSAGE value="added quadratic equation&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="added quadratic equation&#10;" />
+    <MESSAGE value="added leap day and right year, month, day&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added leap day and right year, month, day&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -684,14 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW_2/hometask_math.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW_3/1_leap_year.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -700,10 +700,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW_2/hometask_math.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HW_3/2_correct_incorrect_date.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="18" lean-forward="true" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW_3/3_triangle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="27" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
           <folding />
         </state>
       </provider>
