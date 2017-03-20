@@ -20,9 +20,10 @@ else:
 a = float(input('Input 1st side='))
 b = float(input('Input 2nd side='))
 c = float(input('Input 3rd side='))
-p=a+b+c
+p=a+b=c
+p2=p/2
 if a<(b+c) and b<(a+c) and c<(a+b):
-    print 'P=', p ,'S={}'.format(str(math.sqrt(p*(p-a)*(p-b)*(p-c))))
+    print 'P=', p ,'S={}'.format(str(math.sqrt(p2*(p2-a)*(p2-b)*(p2-c))))
 else:
     print 'Incorrect'
 
@@ -69,5 +70,3 @@ elif l==6:
     print 'Satursday'
 else:
     print 'Sunday'
-
-      
