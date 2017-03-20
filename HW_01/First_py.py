@@ -11,3 +11,5 @@ print "count of i: ",str_1.count("i")
 print "count of j: ",str_1.count("j")
 print "count of e: ",str_1.count("e")
 print "count of u: ",str_1.count("u")
+
+print "hello"
