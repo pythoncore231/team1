@@ -1,14 +1,14 @@
-import math
+from math import sqrt
 
 a = float(input("a = "))
 b = float(input("b = "))
 c = float(input("c = "))
 
-d = a + b + c
 
-if (d < (2*a)) or (d < (2*b)) or (d < (2*c)):
-    print("It is not a triangle")
-elif (a == b == c):
-    print("It is Equalateral")
-elif (a == b) or (a == c) or (b == c):
-    print("It's Isosceles")
+
+if c < (a + b) and a < (c + b) and b < (c + a):
+    p = (a + b + c) / 2
+    s = sqrt(p * (p - a) * (p - b) * (p - c))
+    print("square: ",s)
+else:
+    print("False")
