@@ -1,7 +1,7 @@
 #Find all Four digit numbers, which tsyfer amount equal to a given number
-from math import fsum
+
 number = "20"
-for i in number:
-	if i + i + i + i == number:
-		if i > 1000 and i < 9999:
-			print str(i + i + i + i)
+for i in range(10**3, 10**4):
+   temp = i/1000 + (i/100)%10 + (i%100)/10 + i%10
+   if temp == number:
+           print temp
