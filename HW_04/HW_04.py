@@ -15,13 +15,12 @@
 #     if int(i[0])+int(i[1])+int(i[2])+int(i[3])==n:
 #         print i
 
-# #Fibonacci
-# n=int(raw_input('Input number of order Fibonacci: '))
-# a, b = 0, 1
-# for i in range(n):
-#     a, b = b, a+b
-#     print 'The number of Fibonacci is ', a 
-# i===0???
+#Fibonacci
+n=int(raw_input('Input number of order Fibonacci: '))
+a, b = 0, 1
+for i in range(n):
+    a, b = b, a+b
+    print 'The number of Fibonacci is ', a
 
 # #The third degree
 # n=int(raw_input('Input number: '))
@@ -53,13 +52,3 @@
 #     if g==0:
 #         k+=1
 # print k
-num = int(raw_input("num = "))
-testNumbers = (2, 3, 5, 7)
-
-for i in testNumbers:
-    if not num == i and not num % i:
-        result = False
-        break
-    else:
-        result = True
-print result
