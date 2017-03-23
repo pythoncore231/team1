@@ -3,10 +3,10 @@
 Number = int(raw_input("Enter the start number here "))
 Number1 = int(raw_input("Enter the end number here "))
 
-fib = n
-for n in fib:
+Fibonacci = n
+for n in Fibonacci:
     if n < 2:
         print n
-    print fib(n-2) + fib(n-1)
+    print Fibonacci(n-2) + Fibonacci(n-1)
 
-print map(fib, range(startNumber, endNumber))
+print map(Fibonacci, range(Number, Number1))
