@@ -8,4 +8,3 @@ for i in range(2, k):
         print "NE proste chyslo"
         break
 else: print "Proste chyslo"
-
