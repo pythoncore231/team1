@@ -10,7 +10,7 @@ if Year >= 2017:
 	print  "{}/{}/{}".format(Year,Month,Day)
 elif Year < 2017:
 	print "{}/{}/{} it is past tense!".format(Year,Month,Day)
-elif Month ==1 1 and in range(3.12):
+elif Month == 1 or in range(3.12):
 	print "{}/{}/{}".format(Year,Month,Day)
 elif Day in range(1,31) and  Month not 2:
 	print "{}/{}/{}".format(Year,Month,Day)
