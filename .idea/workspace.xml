@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac7c08f1-28de-4dc0-bce6-7c8dc3082fa0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/team1.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,6 +19,9 @@
   </component>
   <component name="FileEditorManager">
     <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -164,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489955531549</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="delete idea">
+      <created>1490525269012</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1490525269013</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -239,7 +245,8 @@
     <MESSAGE value="Dodav zavdanny pro trykutnyk" />
     <MESSAGE value="Fix vysokosnyi rik i ne parni misyaci" />
     <MESSAGE value="Sprostyv perevirku umovy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprostyv perevirku umovy" />
+    <MESSAGE value="delete idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete idea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
