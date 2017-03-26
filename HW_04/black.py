@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import math
 e = 1E-5    # 10**-5
 a = 0.05
@@ -21,4 +22,3 @@ while x < b:
     print template.format(x, S, y, p)
     x += h
 print "-"*65
-#dorobyty!!!!
