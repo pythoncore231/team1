@@ -11,7 +11,7 @@ for i in range(9,20):
         print "sm= ", sm
     if sm == n:
         print i
-#
+
 #
 #    k = int(i)
 #    s += k**3
