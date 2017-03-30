@@ -69,6 +69,7 @@ def get_rates_by_date(date=None):
 
 def print_dict(obj):
     # Todo 
+    pass
 
 data = get_rates_by_date()
 print data
