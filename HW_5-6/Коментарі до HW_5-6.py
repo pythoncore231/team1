@@ -113,7 +113,7 @@ def difference(date_1, date_2, base):
     dict_2 = get_rates(date_2, base)    # дістаємо словник з курсами валют для 2 дати
     list_check = sorted(dict_rec(dict_1).keys())
     print   # ^ із 1 словника беремо назви валют(ключи), сортуємо за алфавітом, та упаковуємо у список
-    print "Currency", "\t", date_1, "\t   ", date_2, "\t"*2, "Difference"
+    print "Currency", "\t", date_1, "\t"*2, date_2, "\t"*2, "Difference"
     print   # видруковуємо гарну шапку для таблиці
     for each in list_check:             # запускаємо цикл по списку
         val_1 = dict_rec(dict_1)[each]  # за назвою валюти дістаємо її курс на 1 дату

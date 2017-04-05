@@ -2,6 +2,7 @@
 import requests
 
 
+# функція для отримання базового словника курсу валют
 def get_rates(date=None, base=None):
     url = "http://api.fixer.io/"
     if date:

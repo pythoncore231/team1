@@ -56,6 +56,7 @@ def check_base(base):
     return base
 
 
+# функція для отримання попереднього дня для формату дати "YYYY-MM-DD"
 def yesterday(last_date):
     day = int(last_date[8:10])
     month = int(last_date[5:7])
@@ -99,6 +100,7 @@ def yesterday(last_date):
         return "{}-{}-{}".format(year, yes_ter_day_month, yes_ter_day_day)
 
 
+# рекурсивна функція для діставання словників зі словників
 def dict_rec(obj):
     for each in obj:
         if isinstance(obj[each], dict):
