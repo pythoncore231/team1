@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 import math
-e = 1E-5    # 10**-5
+e = 1E-5 #10**-5
 a = 0.05
 b = 0.9
 h = 0.1
@@ -18,7 +19,6 @@ while x < b:
         S += s
     y = 2*x/((1-x)**3)
     p = math.fabs((S-y)/y) * 100
-    print template.format(x, S, y, p)
+    print template.format(x, s, y, p)
     x += h
 print "-"*65
-#dorobyty!!!!
