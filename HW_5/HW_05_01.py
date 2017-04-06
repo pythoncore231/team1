@@ -2,36 +2,37 @@
 
 import requests
 
+
 def date_validations(date):
     """
     :param date(str):
     :return True or False (if error):
     """
- 
+
     if not isinstance(date, str):
-        print "it must be type (str)"
+        print "Введена дата має бути типу string"
         return False
 
     parts = date.split('-')
     if not len(parts) == 3:
-        print "the date must be in format YYYY-DD-MM"
+        print "Введена дата не відповідає формату ""РРРР-ДД-ММ"""
         return False
 
     num = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')
     for part in parts:
         for i in part:
             if not i in num:
-                print "Entered date include incorrect symbols"
+                print "Введена дата містить недопустимі символи"
                 return False
 
     year = int(parts[0])
     if year < 1999:
-        print "Incorrect year input"
+        print "Рік введено некоректно"
         return False
 
     month = int(parts[1])
     if not month in range(0, 13):
-        print "Incorrect month input"
+        print "Місяць введено некоректно"
         return False
 
     day = int(parts[2])
@@ -40,8 +41,10 @@ def date_validations(date):
                                     month in (4, 6, 9, 11) and day <= 30 or \
                                     leapYear and month == 2 and day <= 29 or \
                                     not leapYear and month == 2 and day <= 28):
-        print "Incorrect day input"
+        print "День введено некоректно"
         return False
+
+    return True
 
 
 def base_validations(base):
@@ -56,10 +59,11 @@ def base_validations(base):
               'CZK', 'BRL', 'PLN', 'PHP', 'ZAR', 'USD')
 
     if not base in bases:
-        print "Incorrect valute input"
+        print "Валюта введена некоректно"
         return False
     else:
         return True
+
 
 def get_rates(date=None, base=None):
     """
@@ -67,16 +71,10 @@ def get_rates(date=None, base=None):
     :param base(str or None): {'EUR', 'SD', 'IDR', 'BGN', 'ILS', 'GBP', 'DKK', 'CAD', 'JPY',
                                'HF', 'RON', 'MYR', 'SEK', 'SGD', 'HKD', 'AD', 'CHF', 'KRW',
                                'CNY', 'TRY', 'HRK', 'NZD', 'THB', 'NOK', 'RB', 'INR', 'MXN',
-                               'CZK', 'BRL', 'PLN', 'PHP', 'ZAR'}
+                               'CZK', 'BRL', 'PLN', 'PHP', 'ZAR', 'USD'}
     :return dict or None (if error):
     """
 
-    """ ToDo
-        1) додати перевірку у випадку якщо `date` не None на коректність введення згідно формату
-        2) додати перевірку у випадку якщо `base` не None на коректність введення,
-           є конкретна множина допустимих значень
-
-    """
     if date:
         if not date_validations(date):
             return
@@ -84,7 +82,6 @@ def get_rates(date=None, base=None):
     if base:
         if not base_validations(base):
             return
-
 
     url = "http://api.fixer.io/"
     if date:
@@ -94,8 +91,7 @@ def get_rates(date=None, base=None):
 
     if base:
         url = "{}?base={}".format(url, base)
-    print url
-
+    # print url
 
     data = requests.get(url)
     data = data.json()
@@ -107,17 +103,6 @@ def print_dict_rates(obj):
     :param obj(dict):
     :return None:
     """
-
-    """ ToDo
-    додати реалізацію яка видруковує вхідний словник у вигдаді:
-        date: 2017-03-27
-        base: EUR
-        rates
-            USD: 1.0889
-            IDR: 14486.0
-            BGN: 1.9558
-            ...
-    """
     for i in obj:
         if isinstance(obj[i], dict):
             print "{}:".format(i)
@@ -128,20 +113,13 @@ def print_dict_rates(obj):
 
     pass
 
+
 def exchange(amount, rates, to):
     """
     :param amount(int):
     :param rates(dict):
     :param to(str):
     :return (float):
-    """
-
-    """ ToDo
-        функція приймає 3 параметри,
-        `amount` - сума яку требе обміняти,
-        `rates` - словник який повертає `get_rates()` для валюти з якиї ми збираємось обмінювати,
-        `to` - абрівіатура валюти в яку необхідно обсміняти,
-        повертає суму після обміну
     """
 
     if not base_validations(to):
@@ -158,13 +136,9 @@ def exchange(amount, rates, to):
     pass
 
 
-""" ToDo
-   1) вивести зміну курсу валют для USD за період з 20 по 27 березня 2017 року
-   2) вивести суму яку буде при обміня певної суми DKK на BGN та KRW
-"""
 print_dict_rates(get_rates("2017-03-20", 'USD'))
 print_dict_rates(get_rates("2017-03-27", 'USD'))
 
 date = get_rates("2017-03-27", 'DKK')
-print "50 DKK = {} BGN".format(exchange(50, date, 'BGN'))
-print "50 DKK = {} KRW".format(exchange(50, date, 'KRW'))
+print "30 DKK = {} BGN".format(exchange(30, date, 'BGN'))
+print "30 DKK = {} KRW".format(exchange(30, date, 'KRW'))
