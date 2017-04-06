@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import requests
-
 
 def date_validations(date):
     """
@@ -63,82 +61,3 @@ def base_validations(base):
         return False
     else:
         return True
-
-
-def get_rates(date=None, base=None):
-    """
-    :param date(str or None): format "2000-01-03"
-    :param base(str or None): {'EUR', 'SD', 'IDR', 'BGN', 'ILS', 'GBP', 'DKK', 'CAD', 'JPY',
-                               'HF', 'RON', 'MYR', 'SEK', 'SGD', 'HKD', 'AD', 'CHF', 'KRW',
-                               'CNY', 'TRY', 'HRK', 'NZD', 'THB', 'NOK', 'RB', 'INR', 'MXN',
-                               'CZK', 'BRL', 'PLN', 'PHP', 'ZAR', 'USD'}
-    :return dict or None (if error):
-    """
-
-    if date:
-        if not date_validations(date):
-            return
-
-    if base:
-        if not base_validations(base):
-            return
-
-    url = "http://api.fixer.io/"
-    if date:
-        url += date
-    else:
-        url += 'latest'
-
-    if base:
-        url = "{}?base={}".format(url, base)
-    # print url
-
-    data = requests.get(url)
-    data = data.json()
-    return dict(data)
-
-
-def print_dict_rates(obj):
-    """
-    :param obj(dict):
-    :return None:
-    """
-    for i in obj:
-        if isinstance(obj[i], dict):
-            print "{}:".format(i)
-            for j in obj[i]:
-                print "\t{}: {}".format(j, obj[i][j])
-        else:
-            print "{}: {}".format(i, obj[i])
-
-    pass
-
-
-def exchange(amount, rates, to):
-    """
-    :param amount(int):
-    :param rates(dict):
-    :param to(str):
-    :return (float):
-    """
-
-    if not base_validations(to):
-        return
-
-    if not isinstance(amount, int):
-        print "Сума введена некоректно"
-        return
-
-    rate = rates.get('rates').get(to)
-    if rate:
-       return amount * rate
-
-    pass
-
-
-print_dict_rates(get_rates("2017-03-20", 'USD'))
-print_dict_rates(get_rates("2017-03-27", 'USD'))
-
-date = get_rates("2017-03-27", 'DKK')
-print "50 DKK = {} BGN".format(exchange(50, date, 'BGN'))
-print "50 DKK = {} KRW".format(exchange(50, date, 'KRW'))
