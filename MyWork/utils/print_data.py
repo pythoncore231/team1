@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from fixer.validation_check import base_validations
-
 
 def print_dict_rates(obj):
     """
@@ -18,21 +16,16 @@ def print_dict_rates(obj):
                 print "{}: {}".format(i, obj[i])
 
 
-def print_dict_rates_by_period(data):
+def print_dict_rates_by_period(l):
     """
-    :param data(generator):
+    :param l(generator):
     :return None:
     """
-    # for i in data:
-    #     print_dict_rates(i)
-
-    l = []
-    for obj in data:
-        l.append(obj.get('rates'))
-    rates = zip(l[0], l[0].values(), l[1].values(), l[2].values())
-    for i in rates:
-        for j in i:
-            print "{}\t".format(j),
+    keys = l[0].get("rates").keys()
+    for each in keys:
+        print each, ": \t",
+        for rates in l:
+            print rates["rates"][each], "\t\t",
         print
 
 
@@ -43,14 +36,10 @@ def exchange(amount, rates, to):
     :param to(str):
     :return (float):
     """
-
-    # if not base_validations(to):
-    #     return
-
     if not isinstance(amount, int):
         print "Сума введена некоректно"
         return
 
-    rate = rates.get('rates').get(to)
+    rate = rates['rates'][to]
     if rate:
        return amount * rate
