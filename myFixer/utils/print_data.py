@@ -16,15 +16,15 @@ def print_dict_rates(obj):
                 print "{}: {}".format(i, obj[i])
 
 
-def print_dict_rates_by_period(l):
+def print_dict_rates_by_period(data):
     """
     :param l(generator):
     :return None:
     """
-    keys = l[0].get("rates").keys()
+    keys = data[0]["rates"].keys()
     for each in keys:
         print each, ": \t",
-        for rates in l:
+        for rates in data:
             print rates["rates"][each], "\t\t",
         print
 

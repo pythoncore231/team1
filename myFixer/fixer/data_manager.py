@@ -50,6 +50,9 @@ def get_rates_by_period(start_date, end_date, base=None):
     end_date = map(int, end_date.split("-"))
     end_date = datetime.date(*end_date)
 
+    if start_date > end_date:
+        return
+
     while start_date <= end_date:
         date = str(start_date)
         data = get_rates(date, base)
