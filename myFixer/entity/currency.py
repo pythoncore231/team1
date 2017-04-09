@@ -71,7 +71,6 @@ class Currency(object):
         elif len(others) > 1:
             if others.count(self) == 0:
                 return
-            # split data by week
             template = ""
             template += "base: {:<10}\t".format(self.base)
             template += "\ndate: "
