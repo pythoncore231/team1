@@ -2,63 +2,62 @@
 import requests
 
 
-def check_date(date):
-    if isinstance(date, str):
+def check_date_base(date=None, base=None):
+    if date is None:
+        return True
+    elif isinstance(date, str):
+        if not date[4] == date[7] == "-":
+            print "Date is incorrect"
+            return False
         year = int(date[0:4])
         month = int(date[5:7])
         day = int(date[8:10])
         leap = year % 400 == 0 or year % 4 == 0 and not (year % 100) == 0
 
         if year not in range(2000, 9999):
-            print u"Year is incorrect"
+            print "Year is incorrect"
+            return False
 
         if month not in range(1, 13):
-            print u"Month is incorrect"
+            print "Month is incorrect"
+            return False
 
         if day < 1 or day > 31:
-            print u"Day is incorrect"
+            print "Day is incorrect"
+            return False
 
         elif month == 2:
             if leap and day > 29:
-                print u"Day is incorrect"
+                print "Day is incorrect"
+                return False
             elif leap is False and day > 28:
-                print u"Day is incorrect"
+                print "Day is incorrect"
+                return False
 
         elif month in (1, 3, 5, 7, 8, 10, 12):
             if day > 31:
-                print u"Day is incorrect"
+                print "Day is incorrect"
+                return False
 
         elif month in (4, 6, 9, 11):
             if day > 30:
-                print u"Day is incorrect"
+                print "Day is incorrect"
+                return False
 
-    return date
-
-
-def check_base(base):
-    list_base = (u'EUR', u'USD', u'IDR', u'BGN', u'ILS', u'GBP', u'DKK', u'CAD', u'JPY',
-                 u'HF', u'RON', u'MYR', u'SEK', u'SGD', u'HKD', u'AD', u'CHF', u'KRW',
-                 u'CNY', u'TRY', u'HRK', u'NZD', u'THB', u'NOK', u'RB', u'INR', u'MXN',
-                 u'CZK', u'BRL', u'PLN', u'PHP', u'ZAR')
+    list_base = ('EUR', 'USD', 'IDR', 'BGN', 'ILS', 'GBP', 'DKK', 'CAD', 'JPY',
+                 'HUF', 'RON', 'MYR', 'SEK', 'SGD', 'HKD', 'AUD', 'CHF', 'KRW',
+                 'CNY', 'TRY', 'HRK', 'NZD', 'THB', 'NOK', 'RUB', 'INR', 'MXN',
+                 'CZK', 'BRL', 'PLN', 'PHP', 'ZAR')
+    if base is None:
+        return True
     if base not in list_base:
-        print u"Base is incorrect"
-    return base
+        print "Base is incorrect"
+        return False
 
-
-def print_dict(obj):
-    for each in obj:
-        if isinstance(obj[each], dict):
-            for every in obj[each]:
-                print u"\t{}: {}".format(every, obj[each][every])
-        else:
-            print obj[each]
+    return True
 
 
 def get_rates(date=None, base=None):
-    if date is not None:
-        check_date(date)
-    if base is not None:
-        check_base(base)
     url = u"http://api.fixer.io/"
     if date:
         url += date
@@ -72,25 +71,50 @@ def get_rates(date=None, base=None):
     return dict(data)
 
 
+def checked_rates(date=None, base=None):
+    if check_date_base(date, base):
+        return get_rates(date, base)
+    else:
+        print "Either date or base are invalid."
+
+
+def dict_rec(obj):
+    for each in obj:
+        if isinstance(obj[each], dict):
+            dict_rec(obj[each])
+            return obj[each]
+
+
+def print_dict(obj):
+    for each in obj:
+        if isinstance(obj[each], dict):
+            for every in obj[each]:
+                print u"\t{}: {}".format(every, obj[each][every])
+        else:
+            print obj[each]
+
+
 def exchange(amount, rates, to):
-    rates_dict = get_rates(None, rates)
-    result = float
-    for each in rates_dict:
-        if isinstance(rates_dict, dict):
-            for every in rates_dict[each]:
+    for each in rates:
+        if isinstance(rates, dict):
+            for every in rates[each]:
                 if every == to:
-                    result = amount * rates_dict[each][every]
-    return u"{} {} is {} {}".format(amount, rates, result, to)
+                    return amount * rates[each][to]
 
 
-def period(date_1, date_2, base):
-    day_1 = int(date_1[8:10])
-    day_2 = int(date_2[8:10])
-    for i in range(day_1, day_2+1):
-        date = date_1[:8]+u"{}".format(i)
-        a = get_rates(date, base)
-        print print_dict(a)
+def print_difference(dict_1, dict_2):
+    list_check = sorted(dict_rec(dict_1).keys())
+    for each in list_check:             # запускаємо цикл по списку
+        val_1 = dict_rec(dict_1)[each]  # за назвою валюти дістаємо її курс на 1 дату
+        val_2 = dict_rec(dict_2)[each]  # за назвою валюти дістаємо її курс на 2 дату
+        print " ", each + ":", "\t "*2, val_1, "\t "*2, val_2, "\t "*2, val_2 - val_1
 
-print period(u"2017-03-20", u"2017-03-27", u"USD")
-print exchange(10, u"DKK", u"BGN")
-print exchange(10, u"DKK", u"KRW")
+
+start_date_dict = checked_rates("2017-03-20", "USD")
+end_date_dict = checked_rates("2017-03-27", "USD")
+
+print_difference(start_date_dict, end_date_dict)
+
+dkk = checked_rates(None, "DKK")
+print exchange(10, dkk, "BGN")
+print exchange(10, dkk, "KRW")
