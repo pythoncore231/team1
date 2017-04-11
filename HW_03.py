@@ -34,22 +34,22 @@
 # else:
 #     print 'This is not a leap year.'
 
-y=int(input('Input year.'))
-print 'Leap year!' if y%4==0 else 'This is not a leap year.'
+# y=int(input('Input year.'))
+# print 'Leap year!' if y%4==0 else 'This is not a leap year.'
 
-# #Check correct date
-# y=int(input('Input year:'))
-# m=int(input('Input number of month:'))
-# if 1<= m <= 12:
-#     d=int(input('Input number of day:'))
-#     if 1<=d<=28 and m==2 or d==29 and m==2 and y%4==0:
-#         print 'Year: {}, Month: {}, Day: {}'.format(y, m, d)
-#     elif 1<=d<=30 and m in (4, 6, 9, 11)  or  1<=d<=31 and m!=2:
-#         print 'Year: {}, Month: {}, Day: {}'.format(y, m, d)
-#     else:
-#         print 'Incorrect format of date'
-# else:
-#     print 'Incorrect format of date'
+#Check correct date
+y=int(input('Input year:'))
+m=int(input('Input number of month:'))
+if 1<= m <= 12:
+    d=int(input('Input number of day:'))
+    if 1<=d<=28 and m==2 or d==29 and m==2 and y%4==0:
+        print 'Year: {}, Month: {}, Day: {}'.format(y, m, d)
+    elif 1<=d<=30 and m in (4, 6, 9, 11)  or  1<=d<=31 and m!=2:
+        print 'Year: {}, Month: {}, Day: {}'.format(y, m, d)
+    else:
+        print 'Incorrect format of date'
+else:
+    print 'Incorrect format of date'
 
 # #Day of year
 # d=int(input('Input number of day: '))
