@@ -3,7 +3,7 @@ Created on Apr 3, 2017
 
 @author: vodachuk
 '''
-import requests
+import requests, datetime
 
 def get_rates(date=None, base=None):
     """
@@ -26,3 +26,26 @@ def get_rates(date=None, base=None):
     data = requests.get(url)
     data = data.json()
     return dict(data)
+
+def get_rates_by_period(start_date, end_date, base=None):
+    """
+    :param start_date(str):
+    :param end_date(str):
+    :param base(str):
+    :return generator:
+    """
+
+    start_date = map(int, start_date.split("-"))
+    start_date = datetime.date(*start_date)
+
+    end_date = map(int, end_date.split("-"))
+    end_date = datetime.date(*end_date)
+
+    if start_date > end_date:
+        return
+
+    while start_date <= end_date:
+        date = str(start_date)
+        data = get_rates(date, base)
+        yield data
+        start_date = start_date + datetime.timedelta(days=1)

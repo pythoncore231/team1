@@ -4,7 +4,7 @@ Created on Apr 3, 2017
 @author: vodachuk
 '''
 from fixer.data_manager import get_rates
-import time
+# import time
 import datetime
 from datetime import date
 
