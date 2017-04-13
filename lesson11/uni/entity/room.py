@@ -9,8 +9,8 @@ class Room(Base):
         self.capacity = capacity
     def __str__(self):
         return "id:{} name:{} capacity:{}".format(self.id, self.name, self.capacity)
-    # def __repr__(self):
-    #     return "{}".format(self.name)
+    def __repr__(self):
+        return "{}".format(self.name)
     def to_unicode(self):
         return unicode("{} {} {}".format(self.id, self.name, self.capacity))
 
