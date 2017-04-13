@@ -54,50 +54,6 @@ def check_date_base(date=None, base=None):
     return True
 
 
-# функція для отримання попереднього дня для формату дати "YYYY-MM-DD"
-def yesterday(last_date):
-    day = int(last_date[8:10])
-    month = int(last_date[5:7])
-    year = int(last_date[:4])
-    leap = year % 400 == 0 or year % 4 == 0 and not (year % 100) == 0
-
-    yes_ter_day = day - 1
-
-    if yes_ter_day < 1:
-        month -= 1
-        if month < 1:
-            month += 12
-            year -= 1
-        if month in (1, 3, 5, 7, 8, 10, 12):
-            yes_ter_day += 31
-        if month in (4, 6, 9, 11):
-            yes_ter_day += 30
-        if month == 2 and leap:
-            yes_ter_day += 29
-        if month == 2 and not leap:
-            yes_ter_day += 28
-
-        if len(str(month)) < 2:
-            yes_ter_day_month = "0{}".format(month)
-        else:
-            yes_ter_day_month = "{}".format(month)
-        if len(str(yes_ter_day)) < 2:
-            yes_ter_day_day = "0{}".format(yes_ter_day)
-        else:
-            yes_ter_day_day = "{}".format(yes_ter_day)
-        return "{}-{}-{}".format(year, yes_ter_day_month, yes_ter_day_day)
-    else:
-        if len(str(month)) < 2:
-            yes_ter_day_month = "0{}".format(month)
-        else:
-            yes_ter_day_month = "{}".format(month)
-        if len(str(yes_ter_day)) < 2:
-            yes_ter_day_day = "0{}".format(yes_ter_day)
-        else:
-            yes_ter_day_day = "{}".format(yes_ter_day)
-        return "{}-{}-{}".format(year, yes_ter_day_month, yes_ter_day_day)
-
-
 # рекурсивна функція для діставання словників зі словників
 def dict_rec(obj):
     for each in obj:
@@ -125,12 +81,35 @@ def print_3_days(dict_1, dict_2, dict_3):
 
 
 def last_3_days(list_dict):
+    print
+    print " ", "Base:", "\t ", list_dict[0]["date"], "\t ", list_dict[1]["date"], "\t ", list_dict[2]["date"]
+    print
     list_check = sorted(dict_rec(list_dict[0]).keys())
     for each in list_check:
         val_1 = dict_rec(list_dict[0])[each]
         val_2 = dict_rec(list_dict[1])[each]
         val_3 = dict_rec(list_dict[2])[each]
         print " ", each + ":", "\t "*2, val_1, "\t "*2, val_2, "\t "*2, val_3
+
+
+def last_n_days(list_of_rates):
+    header = " {}: \t".format('Base')
+    for d in list_of_rates:
+        header += "{} \t".format(d['date'])
+    print
+    print header
+    print
+    list_of_dict = [dict_rec(i) for i in list_of_rates]
+    list_of_names = sorted(list_of_dict[0])
+    for base_names in list_of_names:
+        some = [t_2 for t_2 in [value[base_names] for value in list_of_dict]]
+        line = " {}: \t".format(base_names)
+        for every in some:
+            if len(str(every)) < 4:
+                line += "{}\t\t\t".format(every)
+            else:
+                line += "{}\t\t".format(every)
+        print line
 
 
 def print_difference(dict_1, dict_2):
@@ -141,7 +120,7 @@ def print_difference(dict_1, dict_2):
         print " ", each + ":", "\t "*2, val_1, "\t "*2, val_2, "\t "*2, val_2 - val_1
 
 
-def print_exchange(amount, rates, to):
+def exchange(amount, rates, to):
     for each in rates:
         if isinstance(rates, dict):
             for every in rates[each]:

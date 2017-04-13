@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+import datetime
 from fixer.data_manager import get_rates
-from utils.print_data import check_date_base, yesterday, print_dict, last_3_days, print_exchange
+from utils.print_data import check_date_base, print_dict, last_3_days, last_n_days, exchange
 
 
 def checked_rates(date=None, base=None):
@@ -10,17 +11,28 @@ def checked_rates(date=None, base=None):
         print "Either date or base are invalid."
 
 print "last_3_days"
+
+name_of_base = "USD"
+
 # із базового словника беремо запис останньої дати
-last_date = checked_rates(None, "USD")["date"]
+today = datetime.date(*map(int, checked_rates(None, None)["date"].split("-")))
+# на його основі створюємо генератор трьох останніх дат
+generator_of_dates = (str(today - datetime.timedelta(days=each)) for each in range(3))
+# на основі якого збираємо список курсів валют за три останні дні
+list_of_rates = [checked_rates(date, name_of_base) for date in generator_of_dates]
+# видруковуємо курси валют за три останні дні
+last_3_days(list_of_rates)
 
-# створюємо список з дат для 3 останніх днів, за допомогою функції yesterday
-list_3_days = [yesterday(yesterday(last_date)), yesterday(last_date), last_date]
+print
+print "last_n_days"
+n_days = 5
+name_of_base = "USD"
 
-# створюємо список базових словників курсу долара для кожної дати зі списку використовуючи list comprehension
-list_dict = [checked_rates(date, "USD") for date in list_3_days]
-
-# роздруковуємо курс долара для кожної валюти за останні 3 дні
-last_3_days(list_dict)
+today = datetime.date(*map(int, checked_rates(None, None)["date"].split("-")))
+generator_of_dates = (str(today - datetime.timedelta(days=each)) for each in range(n_days))
+list_of_rates = [checked_rates(date, name_of_base) for date in generator_of_dates]
+print
+last_n_days(list_of_rates)
 
 # DONE
 # вивести курс за 25/01/2017 для TRY
@@ -39,10 +51,11 @@ list_of_date = ["{}{}{}".format(date_basis, 0, i) if len(str(i)) < 2
                 else "{}{}".format(date_basis, i) for i in range(1, 26)]
 
 # створюємо список значень курсу CZK для IDR з 1/01/2013 по 25/01/2013 використовуючи list comprehension
-list_of_value = [print_exchange(1, checked_rates(j, 'IDR'), 'CZK')for j in list_of_date]
+list_of_value = [exchange(1, checked_rates(j, 'IDR'), 'CZK')for j in list_of_date]
 
 # визначаємо індекс мінімального значення курсу CZK для IDR з 1/01/2013 по 25/01/2013
 min_index = list_of_value.index(min(list_of_value))
 
 # роздруковуємо дату та значення за індексом мінімального значення курсу CZK для IDR з 1/01/2013 по 25/01/2013
+print
 print "At {} you could buy 1 IDR by {} CZK.".format(list_of_date[min_index], min(list_of_value))
