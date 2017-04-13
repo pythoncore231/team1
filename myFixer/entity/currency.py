@@ -24,7 +24,7 @@ class Currency(object):
         for other in others:
             if not isinstance(other, Currency):
                 return
-        # split data by week
+        # split room.in by week
         weeks = [others[i:i + 7] for i in range(0, others.__len__(), 7)]
         template = ""
         for week in weeks:

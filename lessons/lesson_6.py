@@ -54,5 +54,5 @@ print_dict(data)
 print "min: {}".format(min_dict(data))
 print "max: {}".format(max_dict(data))
 
-# print "min: {}".format(min(dict_in_list(data)))
-# print "max: {}".format(max(dict_in_list(data)))
+# print "min: {}".format(min(dict_in_list(room.in)))
+# print "max: {}".format(max(dict_in_list(room.in)))
