@@ -74,27 +74,8 @@ with io.open("out\\group.out", 'w') as _file_group:
 # на основі вже сформованих даних сформувати довільний розклад і записати у відповідний файл
 # scheduler.py: room, lesson, group, para (1,2,3 int)
 
-scheduler_101_1 = Scheduler(1, rooms[0], lessons[0], groups[0], 1)
-scheduler_101_2 = Scheduler(2, rooms[1], lessons[1], groups[0], 2)
-scheduler_101_3 = Scheduler(3, rooms[2], lessons[2], groups[0], 3)
-scheduler_101_4 = Scheduler(4, rooms[3], lessons[3], groups[0], 4)
-scheduler_101_5 = Scheduler(5, rooms[4], lessons[4], groups[0], 5)
-scheduler_101_6 = Scheduler(6, rooms[5], lessons[5], groups[0], 6)
-scheduler_101_7 = Scheduler(7, rooms[6], lessons[6], groups[0], 7)
-
-scheduler_202_1 = Scheduler(8, rooms[6], lessons[6], groups[1], 1)
-scheduler_202_2 = Scheduler(9, rooms[5], lessons[5], groups[1], 2)
-scheduler_202_3 = Scheduler(10, rooms[4], lessons[4], groups[1], 3)
-scheduler_202_4 = Scheduler(11, rooms[2], lessons[2], groups[1], 4)
-scheduler_202_5 = Scheduler(12, rooms[3], lessons[3], groups[1], 5)
-scheduler_202_6 = Scheduler(13, rooms[1], lessons[1], groups[1], 6)
-scheduler_202_7 = Scheduler(14, rooms[0], lessons[0], groups[1], 7)
-
-schedulers_101 = [scheduler_101_1, scheduler_101_2, scheduler_101_3, scheduler_101_4,
-                  scheduler_101_5, scheduler_101_6, scheduler_101_7]
-
-schedulers_202 = [scheduler_202_1, scheduler_202_2, scheduler_202_3, scheduler_202_4,
-                  scheduler_202_5, scheduler_202_6, scheduler_202_7]
+schedulers_101 = (Scheduler(n + 1, rooms[n], lessons[n], groups[0], n + 1) for n in range(7))
+schedulers_202 = (Scheduler(n + 8, rooms[n], lessons[n], groups[1], n + 2) for n in range(7))
 
 schedulers = [schedulers_101, schedulers_202]
 
