@@ -12,14 +12,14 @@ def get_rates(date=None, base=None):
     data = data.json()
     return dict(data)
 
-def get_rates_by_period(date_1, date_2, base=None):
+def get_rates_by_period(date_1=None, date_2=None, base=None):
     if not date_validator(date_1) and  not date_validator(date_2) and not base_validator(base):
         return False
     else:
-        rates_by_dates=()
-        for i in range (10, 15):
-            get_rates('2017-04-{}'.format(i), base)
-            rates_by_dates.append()
+        rates_by_dates=[]
+        for i in range (20, 25):
+            rates_by_dates.append(get_rates('2017-03-{}'.format(i), base))
+        return rates_by_dates
 
 def date_validator(date):
     if not isinstance(date, str):

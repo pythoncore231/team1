@@ -38,4 +38,24 @@ class Currency(object):
         else:
             return '{} {} is {} {}'.format(amount, self.base, amount * self.rates[to], to)
 
-    # def day_of_min(self, date, base, rates):
+    # def min_value(self, to, *data):
+    #     # if not base_validator(to):
+    #     #     return
+    #     temp_min=[]
+    #     for rates in data:
+    #         temp_min.append(rates([to]), data(date))
+    #     return min(temp_min)
+    #     print temp_min 
+
+    def day_of_min_rate(self, to, data):
+        # if not base_validator(to):
+        #     return
+        # if not isinstance(data, tuple):
+        #     return
+        # for i in data:
+            # if not isinstance(i, Currency):
+            #     return
+        rates = [(rate.rates[to], rate.date) for rate in data]
+        print rates, type(rates)
+        minValue = min(rates, key=lambda n: n[0])
+        return "{}: {}".format(minValue[1], minValue[0])
