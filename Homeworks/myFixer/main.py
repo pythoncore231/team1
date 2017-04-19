@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import requests
-
+from entity.currency import Currency 
 
 def get_rates(date=None, base=None):
     """
@@ -28,7 +28,7 @@ def get_rates(date=None, base=None):
 
     if base:
         url = "{}?base={}".format(url, base)
-    print url
+    # print url
 
 
     data = requests.get(url)
@@ -77,4 +77,24 @@ def exchange(amount, rates, to):
    1) вивести зміну курсу валют для USD за період з 20 по 27 березня 2017 року
    2) вивести суму яку буде при обміня певної суми DKK на BGN та KRW
 """
+# print get_rates()
 
+# data = [Currency(**get_rates(date="2017-01-{}".format(i))) for i in range(10,15)]
+
+data = []
+for i in range(10,15):
+    temp = get_rates(date="2017-01-{}".format(i))
+    currency = Currency(date=temp["date"],
+                        base=temp["base"],
+                        rates=temp["rates"])
+    data.append(currency)
+
+print data
+
+for i in data:
+    print i
+
+print data[0] - data[1]
+print data[0] - 1
+
+print data[0].sub(data[1])
