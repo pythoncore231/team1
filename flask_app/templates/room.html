@@ -1,0 +1,23 @@
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(room_form.name) }}
+    {{ render_field(room_form.capacity) }}
+  </dl>
+  <p><input type=submit value=Add>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>capacity</th>
+  </tr>
+    {% for room in rooms %}
+        <tr>
+            <th>{{ room.id }}</th>
+            <th>{{ room.name }}</th>
+            <th>{{ room.capacity }}</th>
+        </tr>
+    {% endfor %}
+</table>
