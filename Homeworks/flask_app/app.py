@@ -3,7 +3,7 @@ import os.path
 from flask import Flask, request, redirect,  render_template
 from flask_sqlalchemy import SQLAlchemy
 
-from form.room import RoomForm
+from form.forms import RoomForm, UserForm
 
 app = Flask(__name__)
 
@@ -21,6 +21,16 @@ class Room(db.Model):
     def __repr__(self):
         return '<Room {} {}>'.format(self.name, self.capacity)
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(10), nullable=False)
+    lastname = db.Column(db.String(10), nullable=False)
+    age = db.Column(db.Integer, nullable=True)
+
+   # User.py
+   #      firstname (str)
+   #      lastname (str)
+   #      age (int)
 
 @app.route('/')
 def hello_world():
@@ -36,9 +46,27 @@ def room():
         return redirect('/room')
 
     rooms = Room.query.all()
-    return render_template('room.html', form=form, rooms=rooms)
+    print rooms
+    return render_template('room.html', f=form, r=rooms, data="dfasdas")
+
+@app.route('/user', methods=['GET'])
+def user_get():
+   user_f = UserForm(request.form)
+   users = User.query.all()
+   return render_template('user.html', user_form=user_f, users=users)
 
 
+@app.route('/user', methods=['POST'])
+def user_post():
+    user_f = UserForm(request.form)
+    if user_f.validate():
+        user = User(lastname=user_f.lastname.data,
+                    firstname=user_f.firstname.data,
+                    age=user_f.age.data)
+        db.session.add(user)
+        db.session.commit()
+    return redirect('/user')
+    
 
 if __name__ == "__main__":
     db.create_all()
