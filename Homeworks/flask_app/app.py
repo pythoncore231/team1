@@ -26,11 +26,8 @@ class User(db.Model):
     firstname = db.Column(db.String(10), nullable=False)
     lastname = db.Column(db.String(10), nullable=False)
     age = db.Column(db.Integer, nullable=True)
-
-   # User.py
-   #      firstname (str)
-   #      lastname (str)
-   #      age (int)
+    def __repr__(self):
+        return '<User {} {}>'.format(self.id, self.firstname)
 
 @app.route('/')
 def hello_world():
@@ -65,6 +62,18 @@ def user_post():
                     age=user_f.age.data)
         db.session.add(user)
         db.session.commit()
+        return redirect('/user')
+    return render_template('user.html', user_form=user_f)
+
+@app.route('/user/<id>/delete', methods=['GET'])
+def user_delete(id):
+    try:
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+    except Exception, e:
+        print e
+
     return redirect('/user')
     
 
