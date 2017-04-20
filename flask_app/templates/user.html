@@ -15,6 +15,7 @@
     <th>lastname</th>
     <th>age</th>
     <th>X</th>
+    <th>Edit</th>
   </tr>
     {% for user in users %}
         <tr>
@@ -23,6 +24,7 @@
             <th>{{ user.lastname }}</th>
             <th>{{ user.age }}</th>
             <th><a class="button" href="/user/{{user.id}}/delete">delete</a></th>
+            <th><a class="button" href="/user/{{user.id}}/edit">edit</a></th>
         </tr>
     {% endfor %}
 </table>

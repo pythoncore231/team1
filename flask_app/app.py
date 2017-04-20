@@ -104,6 +104,17 @@ def user_delete(id):
 
     return redirect('/user')
 
+@app.route('/user/<id>/edit', methods=['GET'])
+def user_edit(id):
+    try:
+        user = User.query.get(id)
+        db.session.add(user)
+        db.session.commit()
+    except Exception, e:
+        print e
+
+    return redirect('/user')
+
 @app.route('/lesson', methods=['GET', 'POST'])
 # def lesson():
 #     form = LessonForm(request.form)
