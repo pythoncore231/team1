@@ -3,7 +3,7 @@ import os.path
 from flask import Flask, request, redirect,  render_template
 from flask_sqlalchemy import SQLAlchemy
 
-from form.forms import RoomForm, UserForm
+from form.forms import RoomForm, UserForm, LessonForm
 
 app = Flask(__name__)
 
@@ -26,9 +26,48 @@ class User(db.Model):
     firstname = db.Column(db.String(10), nullable=False)
     lastname = db.Column(db.String(10), nullable=False)
     age = db.Column(db.Integer, nullable=True)
+
     def __repr__(self):
         return '<User {} {}>'.format(self.id, self.firstname)
 
+    @staticmethod
+    def get_user(id):
+        user = None
+        try:    
+            user = User.query.get(id)
+        except Exception, e:
+            print e
+        return user
+
+    @staticmethod
+    def create(firstname, lastname, age):
+        user = User(lastname=lastname,
+                    firstname=firstname,
+                    age=age)
+        db.session.add(user)
+        db.session.commit()
+        return user
+
+
+class Lesson(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    teacher = db.Column(db.Integer,nullable=False)
+
+    def __init__(self, name, teacher):
+        self.name = name
+        self.teacher = teacher
+    def __repr__(self):
+        return '<Teacher {} {} {}>'.format(self.id, self.name, self.teacher)
+
+    def get_teacher(self):
+        user = None
+        try:    
+            user = User.query.get(self.teacher)
+        except Exception, e:
+            print e
+        return user
+        
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -57,14 +96,31 @@ def user_get():
 def user_post():
     user_f = UserForm(request.form)
     if user_f.validate():
-        user = User(lastname=user_f.lastname.data,
+        User.create(lastname=user_f.lastname.data,
                     firstname=user_f.firstname.data,
                     age=user_f.age.data)
-        db.session.add(user)
-        db.session.commit()
         return redirect('/user')
     return render_template('user.html', user_form=user_f)
 
+@app.route('/user/<id>/update', methods=['GET', "POST"])
+def user_put(id):
+    user = User.get_user(id)
+    if user:
+        form = UserForm(request.form)
+        if request.method == "POST" and form.validate():
+            user.lastname = form.lastname.data
+            user.firstname = form.firstname.data
+            user.age = form.age.data
+
+            db.session.commit()
+            return redirect('/user')
+
+        form.lastname.data = user.lastname
+        form.firstname.data = user.firstname
+        form.age.data = user.age
+        return render_template('user_update.html', form=form)
+    return redirect('/user') 
+   
 @app.route('/user/<id>/delete', methods=['GET'])
 def user_delete(id):
     try:
@@ -75,7 +131,32 @@ def user_delete(id):
         print e
 
     return redirect('/user')
+
+@app.route('/lesson', methods=['GET'])
+def lesson_get():
+    form = LessonForm(request.form)
+    users = User.query.all()
     
+    lessons = Lesson.query.all()
+    for lesson in lessons:
+        lesson.teacher = lesson.get_teacher()
+        print lesson
+
+
+    return render_template('lesson.html', form=form, lessons=lessons, users=users)
+
+@app.route('/lesson', methods=['POST'])
+def lesson_post():
+    form = LessonForm(request.form)
+    if form.validate():
+        teacher_id = User.get_user(form.teacher.data)
+        if teacher_id:
+            lesson = Lesson(name=form.name.data,
+                            teacher=form.teacher.data)
+            db.session.add(lesson)
+            db.session.commit()
+            return redirect('/lesson')
+    return render_template('lesson.html', form=form)
 
 if __name__ == "__main__":
     db.create_all()
