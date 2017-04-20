@@ -71,6 +71,17 @@ def room():
     rooms = Room.query.all()
     return render_template('room.html', form=form, rooms=rooms)
 
+@app.route('/room/<id>/delete', methods=['GET'])
+def room_delete(id):
+    try:
+        room = Room.query.get(id)
+        db.session.delete(room)
+        db.session.commit()
+    except Exception, e:
+        print e
+
+    return redirect('/room')
+
 @app.route('/user', methods=['GET'])
 def user_get():
    '''
@@ -116,16 +127,6 @@ def user_edit(id):
     return redirect('/user')
 
 @app.route('/lesson', methods=['GET', 'POST'])
-# def lesson():
-#     form = LessonForm(request.form)
-#     if request.method == 'POST' and form.validate():
-#         lesson = Lesson(name=form.name.data, teacher=form.teacher.data)
-#         db.session.add(lesson)
-#         db.session.commit()
-#         return redirect('/lesson')
-# 
-#     lessons = Lesson.query.all()
-#     return render_template('lesson.html', form=form, lessons=lessons)
 def lesson():
     '''
     Lesson route!
@@ -149,6 +150,17 @@ def lesson():
 
     lessons = Lesson.query.all()
     return render_template('lesson.html', form=form, lessons=lessons)
+
+@app.route('/lesson/<id>/delete', methods=['GET'])
+def lesson_delete(id):
+    try:
+        lesson = Lesson.query.get(id)
+        db.session.delete(lesson)
+        db.session.commit()
+    except Exception, e:
+        print e
+
+    return redirect('/lesson')
 
 @app.route('/group', methods=['GET', 'POST'])
 def group():
@@ -180,6 +192,17 @@ def group():
 
     groups = Group.query.all()
     return render_template('group.html', form=form, groups=groups)
+
+@app.route('/group/<id>/delete', methods=['GET'])
+def group_delete(id):
+    try:
+        group = Group.query.get(id)
+        db.session.delete(group)
+        db.session.commit()
+    except Exception, e:
+        print e
+
+    return redirect('/group')
 
 
 if __name__ == "__main__":

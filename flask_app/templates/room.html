@@ -12,12 +12,14 @@
     <th>id</th>
     <th>name</th>
     <th>capacity</th>
+    <th>X</th>
   </tr>
     {% for room in rooms %}
         <tr>
             <th>{{ room.id }}</th>
             <th>{{ room.name }}</th>
             <th>{{ room.capacity }}</th>
+            <th><a class="button" href="/room/{{room.id}}/delete">delete</a></th>
         </tr>
     {% endfor %}
 </table>

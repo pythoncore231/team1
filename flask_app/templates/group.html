@@ -12,12 +12,14 @@
     <th>id</th>
     <th>name</th>
     <th>members (separated by a comma)</th>
+    <th>X</th>
   </tr>
     {% for group in groups %}
         <tr>
             <th>{{ group.id }}</th>
             <th>{{ group.name }}</th>
             <th>{{ group.members }}</th>
+            <th><a class="button" href="/group/{{group.id}}/delete">delete</a></th>
         </tr>
     {% endfor %}
 </table>

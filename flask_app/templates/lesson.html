@@ -12,12 +12,14 @@
     <th>id</th>
     <th>name</th>
     <th>teacher</th>
+    <th>X</th>
   </tr>
     {% for lesson in lessons %}
         <tr>
             <th>{{ lesson.id }}</th>
             <th>{{ lesson.name }}</th>
             <th>{{ lesson.teacher }}</th>
+            <th><a class="button" href="/lesson/{{lesson.id}}/delete">delete</a></th>
         </tr>
     {% endfor %}
 </table>
