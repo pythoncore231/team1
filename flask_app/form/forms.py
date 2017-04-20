@@ -11,3 +11,8 @@ class UserForm(Form):
     
 class LessonForm(Form):
     name = StringField('name:', [validators.Length(min=1, max=100)])
+    teacher = StringField('Teacher', [validators.Length(min=1, max=100)])
+    
+class GroupForm(Form):
+    name = StringField('Name', [validators.Length(min=1, max=15)])
+    members = StringField('Members', [validators.Length(min=1, max=100)])
