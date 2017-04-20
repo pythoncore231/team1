@@ -1,0 +1,23 @@
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.name) }}
+    {{ render_field(form.teacher) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>teacher</th>
+  </tr>
+    {% for lesson in lessons %}
+        <tr>
+            <th>{{ lesson.id }}</th>
+            <th>{{ lesson.name }}</th>
+            <th>{{ lesson.teacher }}</th>
+        </tr>
+    {% endfor %}
+</table>
