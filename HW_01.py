@@ -8,9 +8,10 @@ total = 22
 print ('Correct answers: {:.2%}'.format(points/total))
 
 d = 24544.784245
-num = "%f" % d
+num = "%f"%d
+print num, type(num)
 pos = num.find(".")
-
+print pos
 print(int(num[pos-3]) + int(num[pos-2]) + int(num[pos-1]) + int(num[pos+1]) + int(num[pos+2]) + int(num[pos+3]))
 
 d = "2546.1379"

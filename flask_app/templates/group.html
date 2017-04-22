@@ -1,0 +1,23 @@
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.name) }}
+    {{ render_field(form.members) }}
+  </dl>
+  <p><input type=submit value=add>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>members (separated by a comma)</th>
+  </tr>
+    {% for group in groups %}
+        <tr>
+            <th>{{ group.id }}</th>
+            <th>{{ group.name }}</th>
+            <th>{{ group.members }}</th>
+        </tr>
+    {% endfor %}
+</table>
