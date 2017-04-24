@@ -1,0 +1,28 @@
+entity:
+    base.py
+        id
+        save()
+        read()
+    room.py
+        name (str)
+        capacity (int)
+    User.py
+        firstname (str)
+        lastname (str)
+        age (int)
+    lesson.py
+        name (str)
+        teacher (User)
+    group.py
+        name (str)
+        members (list(user))
+    sheduler.py
+        room
+        lesson
+        group
+        para (1,2,3 int)
+
+main.py
+* зчитати дані проз файлів про кімнати, предмети, користувачів,
+* створити дві групи і заповнити користувачами, після чого записати результат у файл 
+* на основі вже сформованих даних сформувати довільний розклад і записати у відповідний файл
