@@ -29,7 +29,7 @@ def date_validator(date):
 
     parts = date.split('-')
 
-    digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')  ### ??????????????????
+    digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')  ### another way???
     for part in parts:
         for i in part:
             if not i in digits:
