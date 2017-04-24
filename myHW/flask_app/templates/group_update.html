@@ -1,0 +1,42 @@
+{% from "_formhelpers.html" import render_field %}
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>members</th>
+  </tr>
+    {% for member in members %}
+        <tr>
+            <th>{{ lesson.id }}</th>
+            <th>{{ lesson.name }}</th>
+            <th>{% for member in group.members %}
+              {{ member.id }} {{ member.firstname }},
+              {% endfor %}
+            </th>
+        </tr>
+    {% endfor %}
+</table>
+<p>
+<table border>
+  <tr>
+    <th>id</th>
+    <th>firstname</th>
+    <th>lastname</th>
+  </tr>
+    {% for user in users %}
+        <tr>
+            <th>{{ user.id }}</th>
+            <th>{{ user.firstname }}</th>
+            <th>{{ user.lastname }}</th>
+        </tr>
+    {% endfor %}
+</table>
+
+<form method=post>
+  <dl>
+    {{ render_field(form.name) }}
+    {{ render_field(form.members) }}
+  </dl>
+  <p><input type=submit value=update>
+</form>
