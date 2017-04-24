@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, IntegerField, validators
+from wtforms import Form, StringField, IntegerField, validators, DateTimeField
 
 class RoomForm(Form):
     name = StringField('Name:', [validators.Length(min=3, max=10)])
@@ -16,3 +16,10 @@ class LessonForm(Form):
 class GroupForm(Form):
     name = StringField('Name', [validators.Length(min=1, max=10)])
     members = StringField('Members', [validators.Length(min=1, max=30)])
+
+class SchedulerForm(Form):
+    room = IntegerField('Room')
+    lesson = IntegerField('Lesson')
+    group = IntegerField('Group')
+    date = DateTimeField('Date', format='%d/%m/%Y')
+    para = IntegerField('Para', [validators.number_range(min=1, max=7)])

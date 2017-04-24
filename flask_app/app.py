@@ -2,8 +2,9 @@ import os.path
 
 from flask import Flask, request, redirect,  render_template
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
-from form.forms import RoomForm, UserForm, LessonForm, GroupForm
+from form.forms import RoomForm, UserForm, LessonForm, GroupForm, SchedulerForm
 
 app = Flask(__name__)
 
@@ -255,21 +256,23 @@ class Group(db.Model):
         return '<Group {} {} {}>'.format(self.id, self.name, self.members)
 
     def get_members(self):
-        members = None
-        try:    
-            members = .query.get(self.teacher)
+        members = []
+        try:
+            for member in self.members.split(','):
+                user = User.query.get(int(member.strip()))
+                members.append(user)
         except Exception, e:
             print e
-        return user
+        return members
 
-#     @staticmethod ###geting info about lesson (id)
-#     def get_lesson(id):
-#         lesson = None
-#         try:    
-#             lesson = Lesson.query.get(id)
-#         except Exception, e:
-#             print e
-#         return lesson
+    @staticmethod ###geting info about group (id)
+    def get_group(id):
+        group = None
+        try:    
+            group = Group.query.get(id)
+        except Exception, e:
+            print e
+        return group
 
 @app.route('/group', methods=['GET'])
 def group_get():
@@ -279,59 +282,151 @@ def group_get():
     groups = Group.query.all()
     for group in groups:
         group.members = group.get_members()
-        print members
+        # print members
     return render_template('group.html', form=form, groups=groups, users=users)
 
-# @app.route('/lesson', methods=['POST'])
-# def lesson_post():
-#     form = LessonForm(request.form)
-#     if form.validate():
-#         teacher_id = User.get_user(form.teacher.data)
-#         if teacher_id:
-#             lesson = Lesson(name=form.name.data,
-#                             teacher=form.teacher.data)
-#             db.session.add(lesson)
-#             db.session.commit()
-#             return redirect('/lesson')
-#     return render_template('lesson.html', form=form)
+@app.route('/group', methods=['POST'])
+def group_post():
+    form = GroupForm(request.form)
+    if form.validate():
+        group = Group(name=form.name.data,
+                            members=form.members.data)
+        db.session.add(group)
+        db.session.commit()
+        return redirect('/group')
+    return render_template('group.html', form=form)
 
-# @app.route('/lesson/<id>/update', methods=['GET', "POST"]) ###edit existed lesson
-# def lesson_put(id):
-#     users = User.query.all()
-#     lessons = Lesson.query.all()
+@app.route('/group/<id>/update', methods=['GET', "POST"]) ###edit existed group
+def group_put(id):
+    users = User.query.all()
+    groups = Group.query.all()
     
-#     lesson = Lesson.get_lesson(id)
-#     if lesson:
-#         form = LessonForm(request.form)
-#         if request.method == "POST" and form.validate():
-#             lesson.name = form.name.data
-#             lesson.teacher = form.teacher.data
+    group = Group.get_group(id)
+    if group:
+        form = GroupForm(request.form)
+        if request.method == "POST" and form.validate():
+            group.name = form.name.data
+            group.members = form.members.data
 
-#             db.session.commit()
-#             return redirect('/lesson')
+            db.session.commit()
+            return redirect('/group')
 
-#         form.name.data = lesson.name
-#         form.teacher.data = lesson.teacher
-#         return render_template('lesson_update.html', form=form, users=users, lessons=lessons)
-#     return redirect('/lesson') 
+        form.name.data = group.name
+        form.members.data = group.members
+        return render_template('group_update.html', form=form, users=users, groups=groups)
+    return redirect('/lesson') 
 
-# @app.route('/lesson/<id>/delete', methods=['GET']) ###delete existed lesson
-# def lesson_delete(id):
-#     try:
-#         lesson = Lesson.query.get(id)
-#         db.session.delete(lesson)
-#         db.session.commit()
-#     except Exception, e:
-#         print e
+@app.route('/group/<id>/delete', methods=['GET']) ###delete existed group
+def group_delete(id):
+    try:
+        group = Group.query.get(id)
+        db.session.delete(group)
+        db.session.commit()
+    except Exception, e:
+        print e
 
-#     return redirect('/lesson')
+    return redirect('/group')
 
 
+### SCHEDULER  ###
+class Scheduler(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    room = db.Column(db.Integer, nullable=False)
+    lesson = db.Column(db.Integer, nullable=False)
+    group = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    para = db.Column(db.Integer, nullable=False)
 
+    def __init__(self, room, lesson, group, date, para):
+            self.room = room
+            self.lesson = lesson
+            self.group = group
+            self.date = date
+            self.para = para
+
+    def __repr__(self):
+        return '<Scheduler {} {} {} {}>'.format(self.id, self.lesson, self.date, self.para)
+
+    @staticmethod ###geting info about scheduler (id)
+    def get_scheduler(id):
+        scheduler = None
+        try:    
+            scheduler = Scheduler.query.get(id)
+        except Exception, e:
+            print e
+        return scheduler
+
+@app.route('/scheduler', methods=['GET'])
+def scheduler_get():
+    form = SchedulerForm(request.form)
+    lessons = Lesson.query.all()
+    rooms = Room.query.all()
+    groups = Group.query.all()
+    schedulers=Scheduler.query.all()
+    return render_template('scheduler.html', schedulers=schedulers, form=form, groups=groups, lessons=lessons, rooms=rooms)
+
+@app.route('/scheduler', methods=['POST'])
+def scheduler_post():
+    form = SchedulerForm(request.form)
+    if form.validate():
+        scheduler = Scheduler(room=form.room.data,
+                            lesson=form.lesson.data,
+                            group=form.group.data,
+                            date=form.date.data,
+                            para=form.para.data)
+        db.session.add(scheduler)
+        db.session.commit()
+        return redirect('/scheduler')
+    lessons = Lesson.query.all()
+    rooms = Room.query.all()
+    groups = Group.query.all()
+    schedulers=Scheduler.query.all()
+    return render_template('scheduler.html', schedulers=schedulers, form=form, groups=groups, lessons=lessons, rooms=rooms)
+
+@app.route('/scheduler/<id>/delete', methods=['GET']) ###delete existed scheduler
+def scheduler_delete(id):
+    try:
+        scheduler = Scheduler.query.get(id)
+        db.session.delete(scheduler)
+        db.session.commit()
+    except Exception, e:
+        print e
+
+    return redirect('/scheduler')
+
+@app.route('/scheduler/<id>/update', methods=['GET', "POST"])
+def scheduler_put(id):
+    lessons = Lesson.query.all()
+    rooms = Room.query.all()
+    groups = Group.query.all()
+    schedulers=Scheduler.query.all()
+    
+    scheduler = Scheduler.get_scheduler(id)
+    if scheduler:
+        form = SchedulerForm(request.form)
+        if request.method == "POST" and form.validate():
+            scheduler.room = form.room.data
+            scheduler.lesson = form.lesson.data
+            scheduler.group = form.group.data
+            scheduler.date = form.date.data
+            scheduler.para = form.para.data
+
+            db.session.commit()
+            return redirect('/scheduler')
+
+        form.room.data = scheduler.room
+        form.lesson.data = scheduler.lesson
+        form.group.data = scheduler.group
+        form.date.data = scheduler.date
+        form.para.data = scheduler.para
+        return render_template('scheduler_update.html', schedulers=schedulers, form=form, groups=groups, lessons=lessons, rooms=rooms)
+    return redirect('/scheduler') 
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    onday = Scheduler.query.filter(Scheduler.date == date.today())
+    print onday
+    return render_template('main.html', schedulers=onday)
 
 if __name__ == "__main__":
     db.create_all()
