@@ -1,23 +1,64 @@
-{% from "_formhelpers.html" import render_field %}
-<form method=post>
-  <dl>
-    {{ render_field(form.name) }}
-    {{ render_field(form.members) }}
-  </dl>
-  <p><input type=submit value=Register>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from "_formhelpers.html" import render_field %}
+	<title>Scheduler</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="http://127.0.0.1:5000">COURSES</a></h1></div>
+        <div id="menu_icon"></div>
+            <nav>
+                <ul>
+                    <li><a href="http://127.0.0.1:5000/user">Users</a></li>
+                    <li><a href="http://127.0.0.1:5000/room">Rooms</a></li>
+                    <li><a href="http://127.0.0.1:5000/lesson">Lessons</a></li>
+                    <li><a href="http://127.0.0.1:5000/group">Groups</a></li>
+                    <li><a href="http://127.0.0.1:5000/scheduler">Schedulers</a></li>
+                </ul>
+            </nav>
+    </header>
+    <section class="main clearfix">
+        <section class="top">
+            <div class="wrapper content_header clearfix">
+                <h1 class="title">groups</h1>
+                </div>
+        </section>
+        <section class="wrapper">
+                <div class="content">
 
-<table border>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>members (separated by a comma)</th>
-  </tr>
-    {% for group in groups %}
-        <tr>
-            <th>{{ group.id }}</th>
-            <th>{{ group.name }}</th>
-            <th>{{ group.members }}</th>
-        </tr>
-    {% endfor %}
-</table>
+                    <table border>
+                      <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>members</th>
+                          <th>delete</th>
+                            <th>update</th>
+                      </tr>
+                        {% for group in groups %}
+                            <tr>
+                                <td>{{ group[0].id }}</td>
+                                <td>{{ group[0].name }}</td>
+                                <td>{{ group[1] }}</td>
+                                <td><a class="button" href="/group/{{group[0].id}}/delete">delete</a></td>
+                                <td><a class="button" href="/group/{{group[0].id}}/update">update</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br>
+                    <form method=post>
+                      <dl>
+                        {{ render_field(f.name) }}
+                      </dl>
+                      <p><input type=submit value=Register>
+                    </form>
+
+                </div>
+        </section>
+    </section>
+</body>
+</html>

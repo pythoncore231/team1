@@ -25,40 +25,29 @@
     <section class="main clearfix">
         <section class="top">
             <div class="wrapper content_header clearfix">
-                <h1 class="title">ROOMS</h1>
+                <h1 class="title">Scheduler ({{ date }})</h1>
                 </div>
         </section>
         <section class="wrapper">
                 <div class="content">
 
-                    <table border>
+                    <table>
                       <tr>
-                        <th>id</th>
-                        <th>name</th>
-                        <th>capacity</th>
-                        <th>delete</th>
-                        <th>update</th>
+                        <th>room</th>
+                        <th>lesson</th>
+                        <th>group</th>
+                        <th>para</th>
                       </tr>
-                        {% for room in r %}
+                        {% for scheduler in s %}
                             <tr>
-                                <td>{{ room.id }}</td>
-                                <td>{{ room.name }}</td>
-                                <td>{{ room.capacity }}</td>
-                                <td><a class="button" href="/room/{{room.id}}/delete">delete</a></td>
-                                <td><a class="button" href="/room/{{room.id}}/update">update</a></td>
+                                <td>{{ scheduler.room }}</td>
+                                <td>{{ scheduler.lesson }}</td>
+                                <td>{{ scheduler.group }}</td>
+                                <td>{{ scheduler.para }}</td>
                             </tr>
                         {% endfor %}
                     </table>
-                    <br><br>
-                    <form method=post>
-                      <dl>
-                        {{ render_field(f.name) }}
-                        {{ render_field(f.capacity) }}
-                      </dl>
-                      <p><input type=submit value=Add>
-                    </form>
-
-                </div>
+                 </div>
         </section>
     </section>
 </body>

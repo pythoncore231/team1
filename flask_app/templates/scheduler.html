@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from "_formhelpers.html" import render_field %}
+	<title>Scheduler</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="http://127.0.0.1:5000">COURSES</a></h1></div>
+        <div id="menu_icon"></div>
+            <nav>
+                <ul>
+                    <li><a href="http://127.0.0.1:5000/user">Users</a></li>
+                    <li><a href="http://127.0.0.1:5000/room">Rooms</a></li>
+                    <li><a href="http://127.0.0.1:5000/lesson">Lessons</a></li>
+                    <li><a href="http://127.0.0.1:5000/group">Groups</a></li>
+                    <li><a href="http://127.0.0.1:5000/scheduler">Schedulers</a></li>
+                </ul>
+            </nav>
+    </header>
+    <section class="main clearfix">
+        <section class="top">
+            <div class="wrapper content_header clearfix">
+                <h1 class="title">schedulers</h1>
+                </div>
+        </section>
+        <section class="wrapper">
+                <div class="content">
+
+                    <table border>
+                      <tr>
+                        <th>id</th>
+                        <th>room</th>
+                        <th>lesson</th>
+                        <th>group</th>
+                        <th>date</th>
+                        <th>para</th>
+                          <th>delete</th>
+                            <th>update</th>
+                      </tr>
+                        {% for scheduler in s %}
+                            <tr>
+                                <td>{{ scheduler.id }}</td>
+                                <td>{{ scheduler.room }}</td>
+                                <td>{{ scheduler.lesson }}</td>
+                                <td>{{ scheduler.group }}</td>
+                                <td>{{ scheduler.date }}</td>
+                                <td>{{ scheduler.para }}</td>
+                                <td><a class="button" href="/scheduler/{{scheduler.id}}/delete">delete</a></td>
+                                <td><a class="button" href="/scheduler/{{scheduler.id}}/update">update</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br><h2>ROOMS</h2>
+                    <table border>
+                      <tr>
+                        <th>id</th>
+                        <th>name</th>
+                      </tr>
+                        {% for room in r %}
+                            <tr>
+                                <td>{{ room.id }}</td>
+                                <td>{{ room.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br><h2>LESSONS</h2>
+                    <table border>
+                      <tr>
+                        <th>id</th>
+                        <th>name</th>
+                      </tr>
+                        {% for lesson in l %}
+                            <tr>
+                                <td>{{ lesson.id }}</td>
+                                <td>{{ lesson.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br><h2>GROUPS</h2>
+                    <table border>
+                      <tr>
+                        <th>id</th>
+                        <th>name</th>
+                      </tr>
+                        {% for group in g %}
+                            <tr>
+                                <td>{{ group.id }}</td>
+                                <td>{{ group.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br><br>
+                    <form method=post>
+                      <dl>
+                        {{ render_field(form.room_id) }}
+                        {{ render_field(form.lesson_id) }}
+                        {{ render_field(form.group_id) }}
+                        {{ render_field(form.date) }}
+                        {{ render_field(form.para) }}
+                      </dl>
+                      <p><input type=submit value=add>
+                    </form>
+
+                </div>
+        </section>
+    </section>
+</body>
+</html>
