@@ -1,0 +1,11 @@
+<{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.date) }}
+    {{ render_field(form.group) }}
+    {{ render_field(form.para) }}
+    {{ render_field(form.lesson) }}
+    {{ render_field(form.room) }}
+  </dl>
+  <p><input type=submit value=Update>
+</form>

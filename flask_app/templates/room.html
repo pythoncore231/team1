@@ -1,4 +1,7 @@
 {% from "_formhelpers.html" import render_field %}
+
+<a href='/'>Home</a>
+
 <form method=post>
   <dl>
     {{ render_field(room_form.name) }}
@@ -12,12 +15,16 @@
     <th>id</th>
     <th>name</th>
     <th>capacity</th>
+    <th>X</th>
+    <th>edit</th>
   </tr>
     {% for room in rooms %}
         <tr>
             <th>{{ room.id }}</th>
             <th>{{ room.name }}</th>
             <th>{{ room.capacity }}</th>
+            <th><a class="button" href="/room/{{room.id}}/delete">delete</a></th>
+            <th><a class="button" href="/room/{{room.id}}/update">update</a></th>
         </tr>
     {% endfor %}
 </table>

@@ -1,0 +1,27 @@
+{% from "_formhelpers.html" import render_field %}
+
+<a href='/room'>Room</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='/user'>User</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='/lesson'>Lesson</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='/group'>Group</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='/schedule'>Schedule</a><br>
+
+<p>
+<p>Schedule for today
+<p>
+<table border>
+  <tr>
+    <th>group</th>
+    <th>para</th>
+    <th>lesson</th>
+    <th>room</th>
+  </tr>
+    {% for schedule in schedules %}
+        <tr>
+            <th>{{ schedule.group }}</th>
+            <th>{{ schedule.para }}</th>
+            <th>{{ schedule.lesson }}</th>
+            <th>{{ schedule.room }}</th>
+      </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,92 @@
+{% from "_formhelpers.html" import render_field %}
+
+<a href='/'>Home</a>
+<p></p>
+
+<table border>
+  <tr>
+    <th>Room</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>Lesson</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>Group</th>
+  </tr>
+    <tr>
+        <th><table border>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>capacity</th>
+              </tr>
+                {% for room in rooms %}
+                    <tr>
+                        <th>{{ room.id }}</th>
+                        <th>{{ room.name }}</th>
+                        <th>{{ room.capacity }}</th>
+                    </tr>
+                {% endfor %}
+            </table></th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th><table border>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+              </tr>
+                {% for lesson in lessons %}
+                    <tr>
+                        <th>{{ lesson.id }}</th>
+                        <th>{{ lesson.name }}</th>
+                    </tr>
+                {% endfor %}
+            </table></th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th><table border>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+              </tr>
+                {% for group in groups %}
+                    <tr>
+                        <th>{{ group.id }}</th>
+                        <th>{{ group.name }}</th>
+                    </tr>
+                {% endfor %}
+            </table></th>
+    </tr>
+</table>
+
+<form method=post>
+  <dl>
+    {{ render_field(schedule_f.room) }}
+    {{ render_field(schedule_f.lesson) }}
+    {{ render_field(schedule_f.group) }}
+    {{ render_field(schedule_f.date) }}
+    {{ render_field(schedule_f.para) }}
+  </dl>
+  <p><input type=submit value=Add>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>date</th>
+    <th>group</th>
+    <th>para</th>
+    <th>lesson</th>
+    <th>room</th>
+    <th>X</th>
+    <th>edit</th>
+  </tr>
+    {% for schedule in schedules %}
+        <tr>
+            <th>{{ schedule.id }}</th>
+            <th>{{ schedule.date }}</th>
+            <th>{{ schedule.group.name }}</th>
+            <th>{{ schedule.para }}</th>
+            <th>{{ schedule.lesson.name }}</th>
+            <th>{{ schedule.room.name }}</th>
+            <th><a class="button" href="/schedule/{{schedule.id}}/delete">delete</a></th>
+            <th><a class="button" href="/schedule/{{schedule.id}}/update">update</a></th>
+        </tr>
+    {% endfor %}
+</table>
