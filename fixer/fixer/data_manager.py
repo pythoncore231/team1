@@ -22,37 +22,37 @@ def get_rates_by_period(date_1=None, date_2=None, base=None):
         return rates_by_dates
 
 def date_validator(date):
-    if not isinstance(date, str):
-        print "Input in format of string"
-        return False
-    parts = date.split('-')
-    if not len(parts) == 3:
-        print "Input date in format YYYY-DD-MM"
-        return False
-    num = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')
-    for part in parts:
-        for i in part:
-            if not i in num:
-                print "Only digits should be contained"
-                return False
-    year = int(parts[0])
-    if year < 1999:
-        print "Input year after 1999"
-        return False
-    month = int(parts[1])
-    if not month in range(0, 12):
-        print "Month is incorrect"
-        return False
-    day = int(parts[2])
-    leapYear = year % 4 == 0 and not (year % 100) == 0 or year % 400 == 0
-    if day < 0 or not (month in (1, 3, 5, 7, 8, 10, 12) and day <= 31 or \
-                                    month in (4, 6, 9, 11) and day <= 30 or \
-                                    leapYear and month == 2 and day <= 29 or \
-                                    not leapYear and month == 2 and day <= 28):
-        print "Day is incorrect"
+    
+    if not isinstance(date, str) or not len(date.split('-')) == 3:
+        print "Input in format of string and in format YYYY-DD-MM"
         return False
 
-    return True
+    parts = date.split('-')
+
+    digits = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')  ### ??????????????????
+    for part in parts:
+        for i in part:
+            if not i in digits:
+                print 'Only digits'
+                return False
+
+    year = int(parts[0])
+    if year < 1999:
+        print "Input year after 1999 and in digits"
+        return False
+
+    month = int(parts[2])
+    if not 1 <= month <=12:
+        print "Month is incorrect, or month is not digits"
+        return False
+
+    day = int(parts[1])
+    if 1<=day<=28 and month==2 or day==29 and month==2 and year%4==0:
+        return True
+    elif 1<=day<=30 and month in (4, 6, 9, 11)  or  1<=day<=31 and month!=2:
+        return True
+    else:
+        print 'Incorrect format of date'
 
 def base_validator(base):
     bases = ('EUR', 'SD', 'IDR', 'BGN', 'ILS', 'GBP', 'DKK', 'CAD', 'JPY',
@@ -64,3 +64,6 @@ def base_validator(base):
         return False
     else:
         return True
+
+
+print date_validator('2007-31-04')
