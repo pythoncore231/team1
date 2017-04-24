@@ -1,0 +1,19 @@
+add Entity(db.Model):
+    Room
+        name (str)
+        capacity (int)
+    User
+        firstname (str)
+        lastname (str)
+        age (int)
+    Lesson
+        name (str)
+        teacher (User)
+    Group
+        name (str)
+        members (list(user))
+    
+* створитии відповідні сутності
+* створитии форми для кожної сутності
+* створити темплейти для роботи з кожною сутністю
+* створити  get/post рутери для для роботи з кожною з сутностей

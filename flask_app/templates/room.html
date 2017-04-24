@@ -1,0 +1,25 @@
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(f.name) }}
+    {{ render_field(f.capacity) }}
+  </dl>
+  <p><input type=submit value=Add>
+</form>
+{{data}}
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>capacity</th>
+  </tr>
+    {% for room in r %}
+        <tr>
+            <th>{{ room.id }}</th>
+            <th>{{ room.name }}</th>
+            <th>{{ room.capacity }}</th>
+            <th><a class="button" href="/room/{{room.id}}/delete">delete</a></th>
+            <th><a class="button" href="/room/{{room.id}}/update">update</a></th>
+        </tr>
+    {% endfor %}
+</table>

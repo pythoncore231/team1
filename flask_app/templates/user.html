@@ -1,0 +1,29 @@
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(user_form.firstname) }}
+    {{ render_field(user_form.lastname) }}
+    {{ render_field(user_form.age) }}
+  </dl>
+  <p><input type=submit value=Add>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>age</th>
+    <th>X</th>
+  </tr>
+    {% for user in users %}
+        <tr>
+            <th>{{ user.id }}</th>
+            <th>{{ user.firstname }}</th>
+            <th>{{ user.lastname }}</th>
+            <th>{{ user.age }}</th>
+            <th><a class="button" href="/user/{{user.id}}/delete">delete</a></th>
+            <th><a class="button" href="/user/{{user.id}}/update">update</a></th>
+        </tr>
+    {% endfor %}
+</table>

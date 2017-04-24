@@ -1,0 +1,41 @@
+{% from "_formhelpers.html" import render_field %}
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>firstname</th>
+    <th>lastname</th>
+  </tr>
+    {% for user in users %}
+        <tr>
+            <th>{{ user.id }}</th>
+            <th>{{ user.firstname }}</th>
+            <th>{{ user.lastname }}</th>
+        </tr>
+    {% endfor %}
+</table>
+
+<form method=post>
+  <dl>
+    {{ render_field(form.name) }}
+    {{ render_field(form.teacher) }}
+  </dl>
+  <p><input type=submit value=Add>
+</form>
+
+<table border>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>teacher</th>
+  </tr>
+    {% for lesson in lessons %}
+        <tr>
+            <th>{{ lesson.id }}</th>
+            <th>{{ lesson.name }}</th>
+            <th>{{ lesson.teacher.firstname }} {{lesson.teacher.lastname }}</th>
+            <th><a class="button" href="/lesson/{{lesson.id}}/delete">delete</a></th>
+            <th><a class="button" href="/lesson/{{lesson.id}}/update">update</a></th>
+        </tr>
+    {% endfor %}
+</table>
