@@ -110,14 +110,14 @@ class User(db.Model):
         db.session.commit()
         return user
 
-@app.route('/user', methods=['GET']) ###show list of users on screen
+@app.route('/user', methods=['GET']) ###get list of users on page
 def user_get():
    user_f = UserForm(request.form)
    users = User.query.all()
    return render_template('user.html', user_form=user_f, users=users)
 
 
-@app.route('/user', methods=['POST'])  ###create room on page
+@app.route('/user', methods=['POST'])  ###create user on page
 def user_post():
     user_f = UserForm(request.form)
     if user_f.validate():
@@ -187,7 +187,7 @@ class Lesson(db.Model):
             print e
         return lesson
 
-@app.route('/lesson', methods=['GET'])
+@app.route('/lesson', methods=['GET']) ###fill table of existed lessons on page
 def lesson_get():
     form = LessonForm(request.form)
     users = User.query.all()
@@ -255,7 +255,7 @@ class Group(db.Model):
     def __repr__(self):
         return '<Group {} {} {}>'.format(self.id, self.name, self.members)
 
-    def get_members(self):
+    def get_members(self):  ### get members for list
         members = []
         try:
             for member in self.members.split(','):
@@ -290,7 +290,7 @@ def group_post():
     form = GroupForm(request.form)
     if form.validate():
         group = Group(name=form.name.data,
-                            members=form.members.data)
+                        members=form.members.data)
         db.session.add(group)
         db.session.commit()
         return redirect('/group')
@@ -367,7 +367,12 @@ def scheduler_get():
 
 @app.route('/scheduler', methods=['POST'])
 def scheduler_post():
+    lessons = Lesson.query.all()
+    rooms = Room.query.all()
+    groups = Group.query.all()
+    schedulers=Scheduler.query.all()
     form = SchedulerForm(request.form)
+
     if form.validate():
         scheduler = Scheduler(room=form.room.data,
                             lesson=form.lesson.data,
@@ -377,10 +382,7 @@ def scheduler_post():
         db.session.add(scheduler)
         db.session.commit()
         return redirect('/scheduler')
-    lessons = Lesson.query.all()
-    rooms = Room.query.all()
-    groups = Group.query.all()
-    schedulers=Scheduler.query.all()
+    
     return render_template('scheduler.html', schedulers=schedulers, form=form, groups=groups, lessons=lessons, rooms=rooms)
 
 @app.route('/scheduler/<id>/delete', methods=['GET']) ###delete existed scheduler
