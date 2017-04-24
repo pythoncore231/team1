@@ -1,7 +1,5 @@
-
 str1 = """
 The Zen of Python, by Tim Peters
-
 Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.
@@ -23,12 +21,11 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!"""
 
 
-str2 = input("Enter your word")
-
-n = 1
-for i in str1.split():
-    if ((str2 in i) == True) and i.find(str2) == 0:
-        print(i)
-        n += 1
-print("Count words: "), n
+s = raw_input("Enter some symbols: ")
+i = 0
+for n in str1.split():
+    if n.find(s) == 0 :
+        print n
+        i += 1
+print "Count of words: ", i
 

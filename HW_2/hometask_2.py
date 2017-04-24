@@ -25,13 +25,13 @@ print(string.count("better"), string.count("never"), string.count("is"), string.
 
 
 n = 1234
-str_n = format(n)
+str_n = str(n)
 total_n = int(str_n[0]) + int(str_n[1]) + int(str_n[2]) + int(str_n[3])
-print ("total_n = ", total_n)
+print "total_n = ", total_n
 
 
 a = 0
 b = 1
 a, b = b, a
-print("a =", a)
-print("b =", b)
+print "a =", a
+print "b =", b

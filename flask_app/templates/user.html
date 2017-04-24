@@ -1,0 +1,18 @@
+<table border>
+  <tr>
+    <th>id</th>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>age</th>
+    <th>U</th>
+  </tr>
+    {% for user in us %}
+        <tr>
+            <th>{{ user.id }}</th>
+            <th>{{ user.firstname }}</th>
+            <th>{{ user.lastname }}</th>
+            <th>{{ user.age }}</th>
+            <th><a href="/user/{{ user.id }}/update">update</a></th>
+        </tr>
+    {% endfor %}
+</table>
