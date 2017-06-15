@@ -359,6 +359,16 @@ class Schedule(db.Model):
             print e
         return group
 
+    def to_dict(self):
+        data = {}
+        data["id"] = self.id
+        data["room"] = Room.get_room(self.room)
+        data["lesson"] = Lesson.get_lesson(self.lesson)
+        data["group"] = Group.get_group(self.group)
+        data["date"] = self.date
+        data["para"] = self.para
+        return data
+
     @staticmethod
     def get_schedule(id):
         schedule = None
@@ -445,8 +455,8 @@ def starter():
     # day of a week
     today = datetime.today().strftime("%A")
     print today
-    check_day = Schedule.query.filter(Schedule.date == today)
-    return render_template('starter.html', schedules=check_day)
+    schedules = [s.to_dict() for s in Schedule.query.filter(Schedule.date == today)]
+    return render_template('starter.html', schedules=schedules)
 
 
 if __name__ == "__main__":

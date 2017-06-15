@@ -1,27 +1,47 @@
-{% from "_formhelpers.html" import render_field %}
+<!DOCTYPE html>
+<html>
+<head>
 
-<a href='/room'>Room</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='/user'>User</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='/lesson'>Lesson</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='/group'>Group</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='/schedule'>Schedule</a><br>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
-<p>
-<p>Schedule for today
-<p>
-<table border>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+
+    {% from "_formhelpers.html" import render_field %}
+</head>
+
+<body>
+
+<ul id="navbar">
+<li><a href='/'>Home</a></li>
+<li><a href='/room'>Room</a></li>
+<li><a href='/user'>User</a></li>
+<li><a href='/lesson'>Lesson</a></li>
+<li><a href='/group'>Group</a></li>
+<li><a href='/schedule'>Schedule</a></li>
+</ul>
+
+<div class="space"><h1>Schedule for today:</h1></div>
+
+<table>
   <tr>
-    <th>group</th>
-    <th>para</th>
-    <th>lesson</th>
-    <th>room</th>
+    <th>Group</th>
+    <th>Para</th>
+    <th>Lesson</th>
+    <th>Room</th>
   </tr>
     {% for schedule in schedules %}
         <tr>
-            <th>{{ schedule.group }}</th>
-            <th>{{ schedule.para }}</th>
-            <th>{{ schedule.lesson }}</th>
-            <th>{{ schedule.room }}</th>
+            <td>{{ schedule.group.name }}</td>
+            <td>{{ schedule.para }}</td>
+            <td>{{ schedule.lesson.name }}</td>
+            <td>{{ schedule.room.name }}</td>
       </tr>
     {% endfor %}
 </table>
+
+<div class="footer"></div>
+</body>
+</html>

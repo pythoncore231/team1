@@ -1,22 +1,45 @@
-{% from "_formhelpers.html" import render_field %}
+<!DOCTYPE html>
+<html>
+<head>
 
-<a href='/'>Home</a>
-<p></p>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
-<table border>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+
+    {% from "_formhelpers.html" import render_field %}
+</head>
+
+<ul id="navbar">
+<li><a href='/'>Home</a></li>
+<li><a href='/room'>Room</a></li>
+<li><a href='/user'>User</a></li>
+<li><a href='/lesson'>Lesson</a></li>
+<li><a href='/group'>Group</a></li>
+<li><a href='/schedule'>Schedule</a></li>
+</ul>
+
+<div class="space"><p></p></div>
+
+<table>
+    <caption>User</caption>
   <tr>
     <th>id</th>
-    <th>firstname</th>
-    <th>lastname</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
   </tr>
     {% for user in users %}
         <tr>
-            <th>{{ user.id }}</th>
-            <th>{{ user.firstname }}</th>
-            <th>{{ user.lastname }}</th>
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastname }}</td>
         </tr>
     {% endfor %}
 </table>
+
+<div class="space">
 
 <form method=post>
   <dl>
@@ -24,26 +47,30 @@
     {{ render_field(group_f.members) }}
   </dl>
   <p><input type=submit value=Add>
-</form>
+</form></div>
 
-<table border>
+<table>
+    <caption>Group</caption>
   <tr>
     <th>id</th>
-    <th>name</th>
-    <th>members</th>
-    <th>X</th>
-    <th>edit</th>
+    <th>Name</th>
+    <th>Members</th>
+    <th>x</th>
+    <th>Edit</th>
   </tr>
     {% for group in groups %}
         <tr>
-            <th>{{ group.id }}</th>
-            <th>{{ group.name }}</th>
-            <th>
+            <td>{{ group.id }}</td>
+            <td>{{ group.name }}</td>
+            <td>
             {% for member in group.members %}{{ member.lastname }},
             {% endfor %}
-            </th>
-            <th><a class="button" href="/group/{{group.id}}/delete">delete</a></th>
-            <th><a class="button" href="/group/{{group.id}}/update">update</a></th>
+            </td>
+            <td><a class="button" href="/group/{{group.id}}/delete">delete</a></td>
+            <td><a class="button" href="/group/{{group.id}}/update">update</a></td>
         </tr>
     {% endfor %}
 </table>
+
+<div class="footer"></div>
+</html>
